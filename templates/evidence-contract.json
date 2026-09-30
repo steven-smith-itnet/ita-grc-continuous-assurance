@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "control_id": "STO-01",
+  "source_system": "provider API",
+  "scope": "approved native resource IDs",
+  "identity": "scoped collector principal reference",
+  "required_fields": [
+    "native_id",
+    "observed_at",
+    "collected_at",
+    "source_request",
+    "raw_storage_reference",
+    "sha256",
+    "collector_version",
+    "schema_version"
+  ],
+  "pagination": {
+    "required": true,
+    "record_page_count": true,
+    "reconcile_expected_population": true
+  },
+  "failure_handling": {
+    "permission_denied": "UNKNOWN + collection issue",
+    "missing_page": "incomplete run",
+    "unsupported_resource": "UNKNOWN + scope review"
+  },
+  "classification": "confidential",
+  "retention_policy": "approved-policy-reference",
+  "reviewer": "control-steward"
+}

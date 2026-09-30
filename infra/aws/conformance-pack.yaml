@@ -1,0 +1,23 @@
+# Requires AWS Config recording configured for the applicable resources.
+Resources:
+  S3PublicRead:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: atlas-s3-public-read
+      Source:
+        Owner: AWS
+        SourceIdentifier: S3_BUCKET_PUBLIC_READ_PROHIBITED
+  S3PublicWrite:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: atlas-s3-public-write
+      Source:
+        Owner: AWS
+        SourceIdentifier: S3_BUCKET_PUBLIC_WRITE_PROHIBITED
+  S3Encryption:
+    Type: AWS::Config::ConfigRule
+    Properties:
+      ConfigRuleName: atlas-s3-encryption
+      Source:
+        Owner: AWS
+        SourceIdentifier: S3_BUCKET_SERVER_SIDE_ENCRYPTION_ENABLED

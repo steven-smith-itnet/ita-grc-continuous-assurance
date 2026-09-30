@@ -1,0 +1,961 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "assets": [
+    {
+      "id": "aws-records-01",
+      "facts": {
+        "owner": {
+          "value": "records-platform",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/owner"
+        },
+        "classification": {
+          "value": "restricted",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/classification"
+        },
+        "environment": {
+          "value": "prod",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/environment"
+        },
+        "classification_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/classification_reviewed"
+        },
+        "unresolved_discovery_gaps": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/unresolved_discovery_gaps"
+        },
+        "public_access_prevention": {
+          "value": false,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/public_access_prevention"
+        },
+        "encryption_at_rest": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/encryption_at_rest"
+        },
+        "customer_managed_key": {
+          "value": false,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/customer_managed_key"
+        },
+        "data_access_logging": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/data_access_logging"
+        },
+        "log_canary_received": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/log_canary_received"
+        },
+        "privileged_mfa_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/privileged_mfa_verified"
+        },
+        "access_review_at": {
+          "value": "2026-09-01T10:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/access_review_at"
+        },
+        "access_removals_complete": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/access_removals_complete"
+        },
+        "change_approved": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/change_approved"
+        },
+        "change_separation_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/change_separation_verified"
+        },
+        "overdue_critical_vulnerabilities": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/overdue_critical_vulnerabilities"
+        },
+        "recoverable_point_age_hours": {
+          "value": 2,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/recoverable_point_age_hours"
+        },
+        "restore_test_at": {
+          "value": "2026-08-20T12:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/restore_test_at"
+        },
+        "restore_elapsed_hours": {
+          "value": 2.5,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/restore_elapsed_hours"
+        },
+        "restore_integrity_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/restore_integrity_verified"
+        },
+        "retention_policy_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/retention_policy_reviewed"
+        },
+        "legal_hold_checked": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/legal_hold_checked"
+        },
+        "private_path_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-01/private_path_verified"
+        }
+      }
+    },
+    {
+      "id": "aws-records-02",
+      "facts": {
+        "owner": {
+          "value": "",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/owner"
+        },
+        "classification": {
+          "value": "confidential",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/classification"
+        },
+        "environment": {
+          "value": "prod",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/environment"
+        },
+        "classification_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/classification_reviewed"
+        },
+        "unresolved_discovery_gaps": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/unresolved_discovery_gaps"
+        },
+        "public_access_prevention": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/public_access_prevention"
+        },
+        "encryption_at_rest": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/encryption_at_rest"
+        },
+        "customer_managed_key": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/customer_managed_key"
+        },
+        "data_access_logging": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/data_access_logging"
+        },
+        "log_canary_received": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/log_canary_received"
+        },
+        "privileged_mfa_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/privileged_mfa_verified"
+        },
+        "access_review_at": {
+          "value": "2026-04-01T00:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/access_review_at"
+        },
+        "access_removals_complete": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/access_removals_complete"
+        },
+        "change_approved": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/change_approved"
+        },
+        "change_separation_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/change_separation_verified"
+        },
+        "overdue_critical_vulnerabilities": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/overdue_critical_vulnerabilities"
+        },
+        "recoverable_point_age_hours": {
+          "value": 2,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/recoverable_point_age_hours"
+        },
+        "restore_test_at": {
+          "value": "2026-08-20T12:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/restore_test_at"
+        },
+        "restore_elapsed_hours": {
+          "value": 2.5,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/restore_elapsed_hours"
+        },
+        "restore_integrity_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/restore_integrity_verified"
+        },
+        "retention_policy_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/retention_policy_reviewed"
+        },
+        "legal_hold_checked": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/legal_hold_checked"
+        },
+        "private_path_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-02/private_path_verified"
+        }
+      }
+    },
+    {
+      "id": "aws-records-03",
+      "facts": {
+        "owner": {
+          "value": "records-platform",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/owner"
+        },
+        "classification": {
+          "value": "internal",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/classification"
+        },
+        "environment": {
+          "value": "prod",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/environment"
+        },
+        "classification_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/classification_reviewed"
+        },
+        "unresolved_discovery_gaps": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/unresolved_discovery_gaps"
+        },
+        "public_access_prevention": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/public_access_prevention"
+        },
+        "encryption_at_rest": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/encryption_at_rest"
+        },
+        "customer_managed_key": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/customer_managed_key"
+        },
+        "data_access_logging": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/data_access_logging"
+        },
+        "log_canary_received": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/log_canary_received"
+        },
+        "privileged_mfa_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/privileged_mfa_verified"
+        },
+        "access_review_at": {
+          "value": "2026-09-01T10:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/access_review_at"
+        },
+        "access_removals_complete": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/access_removals_complete"
+        },
+        "change_approved": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/change_approved"
+        },
+        "change_separation_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/change_separation_verified"
+        },
+        "overdue_critical_vulnerabilities": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/overdue_critical_vulnerabilities"
+        },
+        "recoverable_point_age_hours": {
+          "value": 2,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/recoverable_point_age_hours"
+        },
+        "restore_test_at": {
+          "value": "2026-08-20T12:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/restore_test_at"
+        },
+        "restore_elapsed_hours": {
+          "value": 2.5,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/restore_elapsed_hours"
+        },
+        "restore_integrity_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/restore_integrity_verified"
+        },
+        "retention_policy_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/retention_policy_reviewed"
+        },
+        "legal_hold_checked": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/legal_hold_checked"
+        },
+        "private_path_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://aws-records-03/private_path_verified"
+        }
+      }
+    },
+    {
+      "id": "azure-records-01",
+      "facts": {
+        "owner": {
+          "value": "records-platform",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/owner"
+        },
+        "classification": {
+          "value": "restricted",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/classification"
+        },
+        "environment": {
+          "value": "prod",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/environment"
+        },
+        "classification_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/classification_reviewed"
+        },
+        "unresolved_discovery_gaps": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/unresolved_discovery_gaps"
+        },
+        "public_access_prevention": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/public_access_prevention"
+        },
+        "encryption_at_rest": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/encryption_at_rest"
+        },
+        "customer_managed_key": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/customer_managed_key"
+        },
+        "data_access_logging": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/data_access_logging"
+        },
+        "log_canary_received": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/log_canary_received"
+        },
+        "privileged_mfa_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/privileged_mfa_verified"
+        },
+        "access_review_at": {
+          "value": "2026-09-01T10:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/access_review_at"
+        },
+        "access_removals_complete": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/access_removals_complete"
+        },
+        "change_approved": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/change_approved"
+        },
+        "change_separation_verified": {
+          "value": false,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/change_separation_verified"
+        },
+        "overdue_critical_vulnerabilities": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/overdue_critical_vulnerabilities"
+        },
+        "recoverable_point_age_hours": {
+          "value": 2,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/recoverable_point_age_hours"
+        },
+        "restore_test_at": {
+          "value": "2026-08-20T12:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/restore_test_at"
+        },
+        "restore_elapsed_hours": {
+          "value": 7,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/restore_elapsed_hours"
+        },
+        "restore_integrity_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/restore_integrity_verified"
+        },
+        "retention_policy_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/retention_policy_reviewed"
+        },
+        "legal_hold_checked": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/legal_hold_checked"
+        },
+        "private_path_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-01/private_path_verified"
+        }
+      }
+    },
+    {
+      "id": "azure-records-02",
+      "facts": {
+        "owner": {
+          "value": "records-platform",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/owner"
+        },
+        "classification": {
+          "value": "confidential",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/classification"
+        },
+        "environment": {
+          "value": "prod",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/environment"
+        },
+        "classification_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/classification_reviewed"
+        },
+        "unresolved_discovery_gaps": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/unresolved_discovery_gaps"
+        },
+        "public_access_prevention": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/public_access_prevention"
+        },
+        "encryption_at_rest": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/encryption_at_rest"
+        },
+        "customer_managed_key": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/customer_managed_key"
+        },
+        "data_access_logging": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/data_access_logging"
+        },
+        "log_canary_received": {
+          "value": true,
+          "collected_at": "2026-09-25T00:00:00Z",
+          "source": "synthetic://azure-records-02/log_canary_received"
+        },
+        "access_review_at": {
+          "value": "2026-09-01T10:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/access_review_at"
+        },
+        "access_removals_complete": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/access_removals_complete"
+        },
+        "change_approved": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/change_approved"
+        },
+        "change_separation_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/change_separation_verified"
+        },
+        "overdue_critical_vulnerabilities": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/overdue_critical_vulnerabilities"
+        },
+        "recoverable_point_age_hours": {
+          "value": 2,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/recoverable_point_age_hours"
+        },
+        "restore_test_at": {
+          "value": "2026-08-20T12:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/restore_test_at"
+        },
+        "restore_elapsed_hours": {
+          "value": 2.5,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/restore_elapsed_hours"
+        },
+        "restore_integrity_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/restore_integrity_verified"
+        },
+        "retention_policy_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/retention_policy_reviewed"
+        },
+        "legal_hold_checked": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/legal_hold_checked"
+        },
+        "private_path_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-02/private_path_verified"
+        }
+      }
+    },
+    {
+      "id": "azure-records-03",
+      "facts": {
+        "owner": {
+          "value": "records-platform",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/owner"
+        },
+        "classification": {
+          "value": "internal",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/classification"
+        },
+        "environment": {
+          "value": "prod",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/environment"
+        },
+        "classification_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/classification_reviewed"
+        },
+        "unresolved_discovery_gaps": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/unresolved_discovery_gaps"
+        },
+        "public_access_prevention": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/public_access_prevention"
+        },
+        "encryption_at_rest": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/encryption_at_rest"
+        },
+        "customer_managed_key": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/customer_managed_key"
+        },
+        "data_access_logging": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/data_access_logging"
+        },
+        "log_canary_received": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/log_canary_received"
+        },
+        "privileged_mfa_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/privileged_mfa_verified"
+        },
+        "access_review_at": {
+          "value": "2026-09-01T10:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/access_review_at"
+        },
+        "access_removals_complete": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/access_removals_complete"
+        },
+        "change_approved": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/change_approved"
+        },
+        "change_separation_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/change_separation_verified"
+        },
+        "overdue_critical_vulnerabilities": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/overdue_critical_vulnerabilities"
+        },
+        "recoverable_point_age_hours": {
+          "value": 2,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/recoverable_point_age_hours"
+        },
+        "restore_test_at": {
+          "value": "2026-08-20T12:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/restore_test_at"
+        },
+        "restore_elapsed_hours": {
+          "value": 2.5,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/restore_elapsed_hours"
+        },
+        "restore_integrity_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/restore_integrity_verified"
+        },
+        "retention_policy_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/retention_policy_reviewed"
+        },
+        "legal_hold_checked": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/legal_hold_checked"
+        },
+        "private_path_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://azure-records-03/private_path_verified"
+        }
+      }
+    },
+    {
+      "id": "gcp-records-01",
+      "facts": {
+        "owner": {
+          "value": "records-platform",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/owner"
+        },
+        "classification": {
+          "value": "restricted",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/classification"
+        },
+        "environment": {
+          "value": "prod",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/environment"
+        },
+        "classification_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/classification_reviewed"
+        },
+        "unresolved_discovery_gaps": {
+          "value": 3,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/unresolved_discovery_gaps"
+        },
+        "public_access_prevention": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/public_access_prevention"
+        },
+        "encryption_at_rest": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/encryption_at_rest"
+        },
+        "customer_managed_key": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/customer_managed_key"
+        },
+        "data_access_logging": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/data_access_logging"
+        },
+        "log_canary_received": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/log_canary_received"
+        },
+        "privileged_mfa_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/privileged_mfa_verified"
+        },
+        "access_review_at": {
+          "value": "2026-09-01T10:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/access_review_at"
+        },
+        "access_removals_complete": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/access_removals_complete"
+        },
+        "change_approved": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/change_approved"
+        },
+        "change_separation_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/change_separation_verified"
+        },
+        "overdue_critical_vulnerabilities": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/overdue_critical_vulnerabilities"
+        },
+        "recoverable_point_age_hours": {
+          "value": 2,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/recoverable_point_age_hours"
+        },
+        "restore_test_at": {
+          "value": "2026-08-20T12:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/restore_test_at"
+        },
+        "restore_elapsed_hours": {
+          "value": 2.5,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/restore_elapsed_hours"
+        },
+        "restore_integrity_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/restore_integrity_verified"
+        },
+        "retention_policy_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/retention_policy_reviewed"
+        },
+        "legal_hold_checked": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/legal_hold_checked"
+        },
+        "private_path_verified": {
+          "value": false,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-01/private_path_verified"
+        }
+      }
+    },
+    {
+      "id": "gcp-records-02",
+      "facts": {
+        "owner": {
+          "value": "records-platform",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/owner"
+        },
+        "classification": {
+          "value": "confidential",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/classification"
+        },
+        "environment": {
+          "value": "prod",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/environment"
+        },
+        "classification_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/classification_reviewed"
+        },
+        "unresolved_discovery_gaps": {
+          "value": 0,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/unresolved_discovery_gaps"
+        },
+        "public_access_prevention": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/public_access_prevention"
+        },
+        "encryption_at_rest": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/encryption_at_rest"
+        },
+        "customer_managed_key": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/customer_managed_key"
+        },
+        "data_access_logging": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/data_access_logging"
+        },
+        "log_canary_received": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/log_canary_received"
+        },
+        "privileged_mfa_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/privileged_mfa_verified"
+        },
+        "access_review_at": {
+          "value": "2026-09-01T10:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/access_review_at"
+        },
+        "access_removals_complete": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/access_removals_complete"
+        },
+        "change_approved": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/change_approved"
+        },
+        "change_separation_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/change_separation_verified"
+        },
+        "overdue_critical_vulnerabilities": {
+          "value": 2,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/overdue_critical_vulnerabilities"
+        },
+        "recoverable_point_age_hours": {
+          "value": 2,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/recoverable_point_age_hours"
+        },
+        "restore_test_at": {
+          "value": "2026-08-20T12:00:00Z",
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/restore_test_at"
+        },
+        "restore_elapsed_hours": {
+          "value": 2.5,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/restore_elapsed_hours"
+        },
+        "restore_integrity_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/restore_integrity_verified"
+        },
+        "retention_policy_reviewed": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/retention_policy_reviewed"
+        },
+        "legal_hold_checked": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/legal_hold_checked"
+        },
+        "private_path_verified": {
+          "value": true,
+          "collected_at": "2026-09-30T10:00:00Z",
+          "source": "synthetic://gcp-records-02/private_path_verified"
+        }
+      }
+    }
+  ]
+}

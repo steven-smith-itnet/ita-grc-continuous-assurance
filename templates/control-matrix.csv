@@ -1,0 +1,2 @@
+control_id,objective,owner,population,frequency,method,framework_version,candidate_mapping,coverage,residual_evidence,reviewer,review_status
+STO-01,Explicit anonymous access prevention,platform-owner,In-scope storage,Daily and relevant change,Configuration examination plus denied-access test,SOC 2 TSC 2017 revised points 2022,CC6 themes,partial,Effective access and operating-period evidence,unassigned,candidate only

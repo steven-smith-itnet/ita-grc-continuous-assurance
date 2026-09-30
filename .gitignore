@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+artifacts/
+site/
+private-evidence/
+.terraform/
+*.tfstate*
+*.tfplan
+*.tfvars
+!*.tfvars.example

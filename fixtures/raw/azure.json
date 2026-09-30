@@ -1,0 +1,12 @@
+{
+  "name": "syntheticrecords",
+  "allowBlobPublicAccess": false,
+  "encryption": {
+    "keySource": "Microsoft.Storage",
+    "services": {
+      "blob": {
+        "enabled": true
+      }
+    }
+  }
+}

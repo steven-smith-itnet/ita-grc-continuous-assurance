@@ -1,0 +1,6 @@
+// Azure Resource Graph example. Execute across approved subscriptions and follow paging.
+Resources
+| project id, name, type, subscriptionId, resourceGroup, location,
+          owner=tostring(tags.owner), classification=tostring(tags.classification),
+          environment=tostring(tags.environment)
+| order by id asc

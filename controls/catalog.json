@@ -1,0 +1,309 @@
+[
+  {
+    "id": "INV-01",
+    "title": "Resource ownership and classification",
+    "severity": "high",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "owner",
+        "op": "nonempty"
+      },
+      {
+        "field": "classification",
+        "op": "one_of",
+        "values": [
+          "public",
+          "internal",
+          "confidential",
+          "restricted"
+        ]
+      },
+      {
+        "field": "environment",
+        "op": "one_of",
+        "values": [
+          "dev",
+          "test",
+          "prod"
+        ]
+      }
+    ],
+    "applies": {},
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "DAT-01",
+    "title": "Sensitive data classification reviewed",
+    "severity": "high",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "classification_reviewed",
+        "op": "true"
+      },
+      {
+        "field": "unresolved_discovery_gaps",
+        "op": "lte",
+        "value": 0
+      }
+    ],
+    "applies": {},
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "STO-01",
+    "title": "Explicit anonymous-access prevention baseline",
+    "severity": "critical",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "public_access_prevention",
+        "op": "true"
+      }
+    ],
+    "applies": {},
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "ENC-01",
+    "title": "At-rest encryption configuration",
+    "severity": "high",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "encryption_at_rest",
+        "op": "true"
+      }
+    ],
+    "applies": {},
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "KEY-01",
+    "title": "Customer-managed key for restricted data",
+    "severity": "high",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "customer_managed_key",
+        "op": "true"
+      }
+    ],
+    "applies": {
+      "classification": [
+        "restricted"
+      ]
+    },
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "LOG-01",
+    "title": "Data access events reach monitored log sink",
+    "severity": "high",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "data_access_logging",
+        "op": "true"
+      },
+      {
+        "field": "log_canary_received",
+        "op": "true"
+      }
+    ],
+    "applies": {},
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "IAM-01",
+    "title": "Privileged workforce MFA validation",
+    "severity": "critical",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "privileged_mfa_verified",
+        "op": "true"
+      }
+    ],
+    "applies": {},
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "IAM-02",
+    "title": "Access review with completed removals",
+    "severity": "high",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "access_review_at",
+        "op": "within_days",
+        "value": 90
+      },
+      {
+        "field": "access_removals_complete",
+        "op": "true"
+      }
+    ],
+    "applies": {},
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "SDLC-01",
+    "title": "Deployment approved independently",
+    "severity": "high",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "change_approved",
+        "op": "true"
+      },
+      {
+        "field": "change_separation_verified",
+        "op": "true"
+      }
+    ],
+    "applies": {},
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "VUL-01",
+    "title": "No overdue critical vulnerability finding",
+    "severity": "high",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "overdue_critical_vulnerabilities",
+        "op": "lte",
+        "value": 0
+      }
+    ],
+    "applies": {},
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "BCP-01",
+    "title": "Latest recoverable point within four hours",
+    "severity": "high",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "recoverable_point_age_hours",
+        "op": "lte",
+        "value": 4
+      }
+    ],
+    "applies": {
+      "criticality": [
+        "tier1"
+      ]
+    },
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "BCP-02",
+    "title": "Restore exercised within 90 days and four hours",
+    "severity": "high",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "restore_test_at",
+        "op": "within_days",
+        "value": 90
+      },
+      {
+        "field": "restore_elapsed_hours",
+        "op": "lte",
+        "value": 4
+      },
+      {
+        "field": "restore_integrity_verified",
+        "op": "true"
+      }
+    ],
+    "applies": {
+      "criticality": [
+        "tier1"
+      ]
+    },
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "RET-01",
+    "title": "Retention and legal-hold decision reviewed",
+    "severity": "medium",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "retention_policy_reviewed",
+        "op": "true"
+      },
+      {
+        "field": "legal_hold_checked",
+        "op": "true"
+      }
+    ],
+    "applies": {},
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  },
+  {
+    "id": "NET-01",
+    "title": "Approved private data path validated",
+    "severity": "high",
+    "max_age_hours": 24,
+    "tests": [
+      {
+        "field": "private_path_verified",
+        "op": "true"
+      }
+    ],
+    "applies": {
+      "classification": [
+        "restricted"
+      ]
+    },
+    "version": "1.0",
+    "owner": "TechGRC control steward",
+    "evidence_type": "synthetic observation in demo",
+    "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
+  }
+]

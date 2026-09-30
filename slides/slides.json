@@ -1,0 +1,202 @@
+[
+  {
+    "title": "Continuous assurance, engineered",
+    "lead": "From service scope to a defensible readiness decision.",
+    "points": [
+      "A fictional multi-cloud service inspired by a TechGRC compliance role.",
+      "Runnable control tests, explicit evidence limits and a phased implementation handbook.",
+      "Synthetic data throughout the public demonstration."
+    ],
+    "notes": "Open the dashboard and distinguish locally tested functionality from the proposed production architecture."
+  },
+  {
+    "title": "Start with the business decision",
+    "lead": "What does the service need to demonstrate?",
+    "points": [
+      "Understand obligations and service commitments.",
+      "Find control failures and missing evidence early.",
+      "Give management and assessors traceable, reviewable information."
+    ],
+    "notes": "The consultant coordinates under the TechGRC manager. Management owns risk acceptance and independent assessors own their conclusions."
+  },
+  {
+    "title": "Scope before score",
+    "lead": "The denominator is an assurance control.",
+    "points": [
+      "Inventory accounts, subscriptions, projects, resources and dependencies.",
+      "Map datasets, replicas, backups, exports and telemetry.",
+      "Retain missing and deleted resources in the relevant population."
+    ],
+    "notes": "Show the ninth synthetic asset, which is absent from evidence but remains in scope."
+  },
+  {
+    "title": "Classification becomes a control input",
+    "lead": "Sensitivity alone is not the whole data contract.",
+    "points": [
+      "Define purpose, owner, residency, retention and criticality.",
+      "Validate discovery coverage and have owners approve classifications.",
+      "Protect metadata changes and test actual enforcement."
+    ],
+    "notes": "Explain resource tags versus Purview labels, Resource Manager tags and BigQuery policy tags."
+  },
+  {
+    "title": "A complete evidence chain",
+    "lead": "Every conclusion has an identifiable path.",
+    "points": [
+      "Requirement \u2192 risk \u2192 control \u2192 implementation.",
+      "Test \u2192 evidence \u2192 finding \u2192 corrective action.",
+      "Independent retest \u2192 management decision."
+    ],
+    "notes": "Use the architecture diagram in the handbook. Describe separate collection, storage and approval trust boundaries."
+  },
+  {
+    "title": "Deliver in eight phases",
+    "lead": "Finish one vertical slice before expanding.",
+    "points": [
+      "Charter, discover, design controls, secure the platform.",
+      "Automate a slice, prove process operation, remediate and prepare audit.",
+      "Operate with evidence-quality and collection SLOs."
+    ],
+    "notes": "Planning ranges are assumptions. Discovery and legal constraints can change the sequence."
+  },
+  {
+    "title": "AWS implementation",
+    "lead": "Use services available to a new lab account.",
+    "points": [
+      "Config and service APIs for scoped configuration evidence.",
+      "CloudTrail, EventBridge and protected S3 for collection and custody.",
+      "Macie where appropriate, with explicit coverage limits."
+    ],
+    "notes": "AWS Audit Manager is not a new-customer baseline after April 30, 2026. Distinguish template authorship from live deployment."
+  },
+  {
+    "title": "Azure implementation",
+    "lead": "Join configuration, identity and data governance evidence.",
+    "points": [
+      "Resource Graph and Policy Insights for resource/control state.",
+      "Entra evidence and monitored diagnostics for process operation.",
+      "Purview supported scans plus tested enforcement paths."
+    ],
+    "notes": "Azure Policy native percentages differ from the strict pass metric. Private endpoints and public-access settings are separate checks."
+  },
+  {
+    "title": "Google Cloud implementation",
+    "lead": "Keep labels, policy and data controls distinct.",
+    "points": [
+      "Cloud Asset Inventory and API contracts for scope and facts.",
+      "Cloud Audit Logs, Cloud Storage and BigQuery for evidence flow.",
+      "Review Compliance Manager scope, residency and encryption constraints."
+    ],
+    "notes": "The narrow adapter returns unknown for inherited public-access prevention until policy evidence is available."
+  },
+  {
+    "title": "Good, better, best",
+    "lead": "Match complexity to a documented requirement.",
+    "points": [
+      "Good: reviewed registers and repeatable tests.",
+      "Better: reconciled collection, policy checks and integrated remediation.",
+      "Best: trusted provenance, regional custody and sustained quality."
+    ],
+    "notes": "These are architecture maturity options, not provider product tiers. More tools do not automatically create stronger assurance."
+  },
+  {
+    "title": "Identity and SDLC",
+    "lead": "Operating evidence connects people and changes to effective access.",
+    "points": [
+      "Joiner, mover and leaver reconciliation includes actual revocation.",
+      "Privileged access needs effective-policy and session evidence.",
+      "Production deployments reconcile to approvals and artifact identities."
+    ],
+    "notes": "Supplied process booleans in the fixture are not a substitute for authenticated HR, IdP, ITSM and pipeline integrations."
+  },
+  {
+    "title": "Recovery must be demonstrated",
+    "lead": "A successful backup job is only one input.",
+    "points": [
+      "Approve RPO and RTO through business impact analysis.",
+      "Recover representative data and dependencies in an isolated environment.",
+      "Measure elapsed time, recoverable data age and integrity."
+    ],
+    "notes": "Show the synthetic seven-hour restore against the four-hour lab target. The target is a project choice, not a universal framework requirement."
+  },
+  {
+    "title": "Four states, no hidden uncertainty",
+    "lead": "Unknown evidence remains visible.",
+    "points": [
+      "PASS: all defined predicates satisfied. FAIL: a demonstrated violation.",
+      "UNKNOWN: missing, stale, malformed or future evidence.",
+      "NOT_APPLICABLE: outside a documented control population."
+    ],
+    "notes": "Known failures remain failures when another predicate is unknown. Accepted risk annotates a failure instead of changing its state."
+  },
+  {
+    "title": "The reproducible result",
+    "lead": "One dataset drives the report and dashboard.",
+    "points": [
+      "9 assets \u00d7 14 controls = 126 evaluated pairs.",
+      "87 PASS \u00b7 9 FAIL \u00b7 12 UNKNOWN \u00b7 18 NOT_APPLICABLE.",
+      "88.89% evaluated coverage and 80.56% passing share of applicable pairs."
+    ],
+    "notes": "These counts describe the fixed synthetic fixture. They are not organizational compliance results or a risk-weighted score."
+  },
+  {
+    "title": "Proof lives in the failure tests",
+    "lead": "The code must handle conditions that create false assurance.",
+    "points": [
+      "Missing resources, stale timestamps and invalid types.",
+      "Expired/self-approved exceptions and incomplete provider fields.",
+      "Changed evidence files detected against the local manifest."
+    ],
+    "notes": "Run the unit suite and demonstrate one mutation. Explain that the hash manifest is not an authenticated signature."
+  },
+  {
+    "title": "Remediation reaches the cause",
+    "lead": "A closed ticket is not a completed control.",
+    "points": [
+      "Validate criteria, condition, population and impact.",
+      "Test causal hypotheses and fix reusable templates/processes.",
+      "Recollect independently and verify effectiveness before closure."
+    ],
+    "notes": "Preserve original findings and evidence. Separate immediate containment from preventive work."
+  },
+  {
+    "title": "Frameworks keep their own meaning",
+    "lead": "Reuse evidence without claiming equivalence.",
+    "points": [
+      "SOC 2: scoped service controls and engagement evidence.",
+      "ISO 27001: an operating management system and risk treatment.",
+      "PCI DSS, HIPAA and HITRUST: distinct applicability and assessment workstreams."
+    ],
+    "notes": "The handbook provides thematic mapping and implementation workstreams, not a complete licensed certification workbook."
+  },
+  {
+    "title": "Global operation and human controls",
+    "lead": "Cloud posture does not cover the entire program.",
+    "points": [
+      "Acknowledged handoffs, regional evidence custody and named decision owners.",
+      "Supplier, personnel, physical, policy and privacy responsibilities.",
+      "Management reporting that exposes unknowns and overdue decisions."
+    ],
+    "notes": "Describe how the same evidence supports engineering, business and assessor audiences at different levels of detail."
+  },
+  {
+    "title": "AI is an optional assistant",
+    "lead": "Keep evidence and authority outside unconstrained model output.",
+    "points": [
+      "Draft summaries and candidate mappings from approved sources.",
+      "Test citation accuracy, unsupported claims and prompt injection.",
+      "Retain deterministic states and human approval for consequential decisions."
+    ],
+    "notes": "No model APIs are called by the demo. Agentic workflows are a proposed extension with bounded tools and reviewed access."
+  },
+  {
+    "title": "A practical path to production",
+    "lead": "The next stage is a measured pilot.",
+    "points": [
+      "Choose one service, one provider and a small control set.",
+      "Authenticate sources, validate semantics and prove live integration.",
+      "Expand after evidence quality, ownership and operating cost are understood."
+    ],
+    "notes": "Close with the source download, handbook and runnable commands. Do not claim live cloud implementation or an external audit outcome."
+  }
+]

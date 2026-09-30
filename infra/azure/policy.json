@@ -1,0 +1,25 @@
+{
+  "properties": {
+    "displayName": "Atlas storage explicit anonymous access prevention",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "Audit storage accounts without explicit anonymous blob access prevention. Review alias support before assignment.",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+            "notEquals": false
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    }
+  }
+}

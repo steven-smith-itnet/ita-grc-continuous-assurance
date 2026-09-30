@@ -1,0 +1,2 @@
+request_id,control_id,period_start,period_end,population,owner,due_date,classification,evidence_uri,reviewer,status
+PBC-001,STO-01,2026-09-01,2026-09-30,Approved storage population,platform-owner,2026-10-05,confidential,regional-vault-reference,assurance-reviewer,planned

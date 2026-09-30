@@ -1,0 +1,2 @@
+asset_id,service_id,provider,account_project_subscription,region,native_id,owner,dataset_id,classification,criticality,retention_policy,first_seen,last_seen,collection_status
+synthetic-asset-01,atlas-records,aws,synthetic-account,us-east-2,synthetic-resource,records-platform,dataset-01,restricted,tier1,records-policy-07,2026-09-30T10:00:00Z,2026-09-30T10:00:00Z,synthetic

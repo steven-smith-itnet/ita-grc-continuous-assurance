@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "description": "Nine synthetic storage workloads across three providers. Entire declared population, not cloud discovery.",
+  "assets": [
+    {
+      "id": "aws-records-01",
+      "provider": "aws",
+      "classification": "restricted",
+      "criticality": "tier1",
+      "region": "us-east-2",
+      "owner": "records-platform",
+      "service": "synthetic-records",
+      "environment": "prod",
+      "data_domain": "synthetic-customer-records"
+    },
+    {
+      "id": "aws-records-02",
+      "provider": "aws",
+      "classification": "confidential",
+      "criticality": "tier1",
+      "region": "us-east-2",
+      "owner": "records-platform",
+      "service": "synthetic-records",
+      "environment": "prod",
+      "data_domain": "synthetic-customer-records"
+    },
+    {
+      "id": "aws-records-03",
+      "provider": "aws",
+      "classification": "internal",
+      "criticality": "tier2",
+      "region": "us-east-2",
+      "owner": "records-platform",
+      "service": "synthetic-records",
+      "environment": "prod",
+      "data_domain": "synthetic-customer-records"
+    },
+    {
+      "id": "azure-records-01",
+      "provider": "azure",
+      "classification": "restricted",
+      "criticality": "tier1",
+      "region": "eastus2",
+      "owner": "records-platform",
+      "service": "synthetic-records",
+      "environment": "prod",
+      "data_domain": "synthetic-customer-records"
+    },
+    {
+      "id": "azure-records-02",
+      "provider": "azure",
+      "classification": "confidential",
+      "criticality": "tier1",
+      "region": "eastus2",
+      "owner": "records-platform",
+      "service": "synthetic-records",
+      "environment": "prod",
+      "data_domain": "synthetic-customer-records"
+    },
+    {
+      "id": "azure-records-03",
+      "provider": "azure",
+      "classification": "internal",
+      "criticality": "tier2",
+      "region": "eastus2",
+      "owner": "records-platform",
+      "service": "synthetic-records",
+      "environment": "prod",
+      "data_domain": "synthetic-customer-records"
+    },
+    {
+      "id": "gcp-records-01",
+      "provider": "gcp",
+      "classification": "restricted",
+      "criticality": "tier1",
+      "region": "us-central1",
+      "owner": "records-platform",
+      "service": "synthetic-records",
+      "environment": "prod",
+      "data_domain": "synthetic-customer-records"
+    },
+    {
+      "id": "gcp-records-02",
+      "provider": "gcp",
+      "classification": "confidential",
+      "criticality": "tier1",
+      "region": "us-central1",
+      "owner": "records-platform",
+      "service": "synthetic-records",
+      "environment": "prod",
+      "data_domain": "synthetic-customer-records"
+    },
+    {
+      "id": "gcp-records-03",
+      "provider": "gcp",
+      "classification": "internal",
+      "criticality": "tier2",
+      "region": "us-central1",
+      "owner": "records-platform",
+      "service": "synthetic-records",
+      "environment": "prod",
+      "data_domain": "synthetic-customer-records"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "EX-001",
+    "asset_id": "aws-records-01",
+    "control_id": "KEY-01",
+    "status": "approved",
+    "requester": "platform-owner",
+    "approver": "risk-owner",
+    "approved_at": "2026-09-29T00:00:00Z",
+    "expires_at": "2026-10-07T00:00:00Z",
+    "rationale": "Synthetic example of a scheduled key migration",
+    "compensating_control": "Provider encryption and restricted access, reviewed for the lab"
+  }
+]

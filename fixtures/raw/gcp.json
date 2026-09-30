@@ -1,0 +1,9 @@
+{
+  "name": "synthetic-records",
+  "iamConfiguration": {
+    "publicAccessPrevention": "enforced",
+    "uniformBucketLevelAccess": {
+      "enabled": true
+    }
+  }
+}
