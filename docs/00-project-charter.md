@@ -1,8 +1,8 @@
 # Build a continuous assurance program
 
-A portfolio engineering case study inspired by the supplied Compliance Product Consultant role description for Adobe Technology GRC. This project uses a fictional service called **Atlas Records**, synthetic evidence, and proposed operating procedures. Adobe's actual architecture, policies, findings, control implementations, and audit scope were not provided. Nothing here represents an Adobe engagement or an assurance opinion.
+A portfolio engineering case study inspired by the supplied Compliance Product Consultant role description, with the employer anonymized as **Acme**. This project models Acme's Technology GRC group using a fictional service called **Atlas Records**, synthetic evidence, and proposed operating procedures. The source employer's actual architecture, policies, findings, control implementations, and audit scope were not provided. Nothing here represents a real client engagement or an assurance opinion.
 
-The [original role excerpt](../ROLE-SOURCE.md) is retained for traceability.
+The [anonymized role excerpt](../ROLE-SOURCE.md) is retained for traceability.
 
 The business problem is straightforward: a product team must explain which obligations apply to its service, demonstrate that controls operate, find exceptions early, and close findings with evidence that survives scrutiny. Adding a dashboard does not solve unclear scope, unreliable inventories, missing ownership, or poor evidence quality. This project builds those foundations first.
 

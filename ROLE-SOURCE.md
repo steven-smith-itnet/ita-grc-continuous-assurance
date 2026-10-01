@@ -1,10 +1,10 @@
 # Supplied role description
 
-Source: user-pasted role description, captured 2026-09-30. No posting URL or additional Adobe architecture information was supplied. The excerpt is preserved as the requirements input. Project guidance interprets the apparent spelling “HITRSUT” as HITRUST.
+Source: user-pasted role description, captured 2026-09-30. The employer name has been anonymized as **Acme**, a fictional organization. No posting URL or additional employer architecture information was supplied. The anonymized excerpt is retained as the requirements input. Project guidance interprets the apparent spelling “HITRSUT” as HITRUST.
 
-## Original excerpt
+## Anonymized excerpt
 
-This is a Compliance Product Consultant role for Adobe’s Technology GRC (TechGRC) group. The candidate will be responsible for the continuous auditing and monitoring requirements supporting the compliance function.
+This is a Compliance Product Consultant role for Acme’s Technology GRC (TechGRC) group. The candidate will be responsible for the continuous auditing and monitoring requirements supporting the compliance function.
 
 - Work under the supervision and guidance of the TechGRC manager and drive technology compliance activities including external audit and service readiness.
 - Draft compliance reports to summarize the compliance objectives, key findings, and work with teams to remediate key findings

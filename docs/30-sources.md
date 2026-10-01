@@ -54,6 +54,6 @@ Last source review: **2026-09-30**. The supplied role description is the require
 | Framework mappings | Primary-source thematic review | Licensed requirement-level mapping and assessor review |
 | Program outcomes | Proposed objectives and metrics | Actual operational measurements over an agreed period |
 
-Do not infer cost savings, audit success, production coverage or Adobe adoption from the portfolio demonstration. The project's value is the inspectable implementation, explicit methodology and practical execution plan.
+Do not infer cost savings, audit success, production coverage or real-world adoption from the portfolio demonstration. The project's value is the inspectable implementation, explicit methodology and practical execution plan.
 
 See [the local validation record](../VALIDATION.md) for tool versions and actual checks.

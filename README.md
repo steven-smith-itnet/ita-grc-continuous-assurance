@@ -2,7 +2,7 @@
 
 A multi-cloud portfolio case study connecting data inventory, classification, automated control testing, evidence engineering, remediation and audit readiness.
 
-Inspired by a user-supplied Compliance Product Consultant role description for Adobe Technology GRC. This is an independent fictional-service project. It does not describe Adobe's internal environment, an engagement, a production deployment or a completed audit.
+Inspired by a user-supplied Compliance Product Consultant role description, with the employer anonymized as **Acme**. This independent project models Acme's Technology GRC group and its fictional **Atlas Records** service. It does not describe a real organization's internal environment, an engagement, a production deployment or a completed audit.
 
 ## Start here
 
@@ -30,6 +30,10 @@ The engine and tests require Python 3.11+ and no third-party packages. Provider 
 
 ## Presentation site
 
+- [Live handbook and interactive demo](https://steven-smith-itnet.github.io/techgrc-continuous-assurance/)
+- [Presentation](https://steven-smith-itnet.github.io/techgrc-continuous-assurance/presentation.html)
+- [GitHub repository](https://github.com/steven-smith-itnet/techgrc-continuous-assurance)
+
 ```bash
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
@@ -42,7 +46,7 @@ Open http://localhost:8765. The site contains a searchable handbook, interactive
 
 ## Standalone GitHub Pages
 
-This project is a standalone repository at `/home/ssmith/repos/techgrc-continuous-assurance`. Its `.github/workflows/check.yml` tests and builds it. Set Settings → Pages → Source to GitHub Actions, then manually run the Pages workflow. The workflow publishes only the generated static site. Internal links work under a repository project path.
+This project is a standalone repository at `/home/ssmith/repos/techgrc-continuous-assurance`. Its `.github/workflows/check.yml` tests and builds it. GitHub Pages uses GitHub Actions, and the Pages workflow deploys on every push to `main` or a manual run. The workflow publishes only the generated static site. Internal links work under a repository project path.
 
 The public source ZIP uses an explicit directory/suffix allowlist. Private evidence, arbitrary artifacts, credentials, local environments and Terraform state are excluded. Do not replace synthetic fixtures with real records in a public repository.
 
@@ -66,7 +70,7 @@ The public source ZIP uses an explicit directory/suffix allowlist. Private evide
 
 Locally executed: synthetic evaluator, automated tests, evidence verification, site build and checks.
 
-Authored but not live deployed: cloud templates, cloud CLI examples and enterprise workflows. Native validation and sandbox integration are required before use. The project has not collected real Adobe, customer, employee, payment or health data.
+Authored but not live deployed: cloud templates, cloud CLI examples and enterprise workflows. Native validation and sandbox integration are required before use. The project has not collected real organizational, customer, employee, payment or health data.
 
 Formal assessment requires authoritative framework text, approved scope, actual operating evidence and appropriate independent review. The project demonstrates the engineering and operating method without claiming certification or an audit opinion.
 
