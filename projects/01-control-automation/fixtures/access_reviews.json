@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://iga/access-review-export",
+  "collected_at": "2026-09-30T06:00:00Z",
+  "campaigns": [
+    {"campaign_id": "AR-AWS-Q3", "provider": "aws", "group": "aws-admins", "due_at": "2026-09-15T00:00:00Z", "completed_at": "2026-09-09T17:00:00Z", "items": [
+      {"account_id": "u-1001", "reviewer": "mgr-cloud", "decision": "keep", "decided_at": "2026-09-08T15:00:00Z"},
+      {"account_id": "u-1011", "reviewer": "mgr-cloud", "decision": "keep", "decided_at": "2026-09-08T15:05:00Z"},
+      {"account_id": "bg-aws-01", "reviewer": "mgr-identity", "decision": "keep", "decided_at": "2026-09-09T16:00:00Z"}]},
+    {"campaign_id": "AR-AZ-Q3", "provider": "azure", "group": "azure-owners", "due_at": "2026-09-15T00:00:00Z", "completed_at": "2026-09-12T17:00:00Z", "items": [
+      {"account_id": "u-1009", "reviewer": "mgr-cloud", "decision": "keep", "decided_at": "2026-09-10T15:00:00Z"},
+      {"account_id": "u-1012", "reviewer": "mgr-cloud", "decision": "keep", "decided_at": "2026-09-10T15:02:00Z"},
+      {"account_id": "u-1014", "reviewer": "mgr-cloud", "decision": "revoke", "decided_at": "2026-09-10T15:04:00Z"},
+      {"account_id": "bg-azure-01", "reviewer": "mgr-identity", "decision": "keep", "decided_at": "2026-09-11T10:00:00Z"}]},
+    {"campaign_id": "AR-GCP-Q3", "provider": "gcp", "group": "gcp-org-admins", "due_at": "2026-09-15T00:00:00Z", "completed_at": "2026-09-14T17:00:00Z", "items": [
+      {"account_id": "u-1010", "reviewer": "u-1010", "decision": "keep", "decided_at": "2026-09-14T15:00:00Z"},
+      {"account_id": "u-1013", "reviewer": "mgr-data", "decision": "keep", "decided_at": "2026-09-14T15:10:00Z"}]},
+    {"campaign_id": "AR-EPHI-Q3", "provider": "aws", "group": "ephi-app-admins", "due_at": "2026-09-15T00:00:00Z", "completed_at": "2026-09-13T17:00:00Z", "items": [
+      {"account_id": "u-1016", "reviewer": "mgr-clinical-apps", "decision": "keep", "decided_at": "2026-09-13T15:00:00Z"}]}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://idp/group-snapshots",
+  "note": "Membership captured at each campaign start. No snapshot was retained for AR-EPHI-Q3.",
+  "snapshots": [
+    {"campaign_id": "AR-AWS-Q3", "group": "aws-admins", "taken_at": "2026-09-01T00:00:00Z", "members": ["u-1001", "u-1011", "bg-aws-01"]},
+    {"campaign_id": "AR-AZ-Q3", "group": "azure-owners", "taken_at": "2026-09-01T00:00:00Z", "members": ["u-1009", "u-1012", "u-1014", "bg-azure-01"]},
+    {"campaign_id": "AR-GCP-Q3", "group": "gcp-org-admins", "taken_at": "2026-09-01T00:00:00Z", "members": ["u-1010", "u-1013", "u-1015"]}
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://assurance/run-history",
+  "note": "Results from earlier scheduled runs of Projects 01 and 02. The collector identity is the read-only assurance role unless an engineer ran the check from their own session.",
+  "runs": [
+    {"run_id": "R-01", "at": "2026-09-12T06:00:00Z", "collector_identity": "assurance-collector", "results": [
+      {"control": "UC-07", "entity": "gcp-gke-pool-01", "status": "PASS"}]},
+    {"run_id": "R-02", "at": "2026-09-20T06:00:00Z", "collector_identity": "assurance-collector", "results": [
+      {"control": "UC-07", "entity": "gcp-gke-pool-01", "status": "PASS"},
+      {"control": "UC-07", "entity": "aws-vm-worker-01", "status": "FAIL"}]},
+    {"run_id": "R-03", "at": "2026-09-08T18:00:00Z", "collector_identity": "assurance-collector", "results": [
+      {"control": "UC-03", "entity": "azure-repos/atlas-web", "status": "FAIL"}]},
+    {"run_id": "R-04", "at": "2026-09-29T22:00:00Z", "collector_identity": "assurance-collector", "results": [
+      {"control": "STG.identity_only_access", "entity": "gcp-records-01", "status": "PASS"},
+      {"control": "STG.identity_only_access", "entity": "gcp-records-02", "status": "PASS"}]},
+    {"run_id": "R-05", "at": "2026-09-30T04:00:00Z", "collector_identity": "assurance-collector", "results": [
+      {"control": "STG.identity_only_access", "entity": "gcp-records-01", "status": "PASS"},
+      {"control": "STG.identity_only_access", "entity": "gcp-records-02", "status": "PASS"}]},
+    {"run_id": "R-06", "at": "2026-09-30T06:00:00Z", "collector_identity": "assurance-collector", "results": [
+      {"control": "UC-05", "entity": "aws-claims-docs", "status": "FAIL"},
+      {"control": "UC-07", "entity": "aws-vm-worker-01", "status": "FAIL"},
+      {"control": "UC-07", "entity": "gcp-gke-pool-01", "status": "PASS"},
+      {"control": "UC-07", "entity": "gcp-vm-extract-01", "status": "UNKNOWN"}]},
+    {"run_id": "R-07", "at": "2026-09-30T10:00:00Z", "collector_identity": "assurance-collector", "results": [
+      {"control": "STG.public_access_prevented", "entity": "aws-records-01", "status": "FAIL"},
+      {"control": "STG.public_access_prevented", "entity": "aws-records-02", "status": "PASS"},
+      {"control": "STG.identity_only_access", "entity": "azure-records-01", "status": "FAIL"},
+      {"control": "STG.identity_only_access", "entity": "gcp-records-01", "status": "PASS"},
+      {"control": "STG.identity_only_access", "entity": "gcp-records-02", "status": "PASS"}]},
+    {"run_id": "R-08", "at": "2026-09-30T10:45:00Z", "collector_identity": "platform-eng-2", "results": [
+      {"control": "STG.identity_only_access", "entity": "azure-records-01", "status": "PASS"}]},
+    {"run_id": "R-09", "at": "2026-09-30T11:30:00Z", "collector_identity": "assurance-collector", "results": [
+      {"control": "STG.public_access_prevented", "entity": "aws-records-01", "status": "PASS"},
+      {"control": "STG.public_access_prevented", "entity": "aws-records-02", "status": "PASS"},
+      {"control": "STG.identity_only_access", "entity": "gcp-records-01", "status": "PASS"},
+      {"control": "STG.identity_only_access", "entity": "gcp-records-02", "status": "PASS"}]}
+  ]
+}

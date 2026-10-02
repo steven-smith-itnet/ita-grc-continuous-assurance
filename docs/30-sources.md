@@ -1,6 +1,6 @@
 # Source register and verification boundaries
 
-Last source review: **2026-09-30**. The supplied role description is the requirements source. The architecture, phases, thresholds, fictional service and example procedures are this project's design choices. Provider behavior and framework descriptions use the primary references below. Recheck availability, supported resource types, regional behavior, licensing and authoritative framework text before implementation.
+Last source review: **2026-10-02**. The supplied role description is the requirements source. The architecture, phases, thresholds, fictional service and example procedures are this project's design choices. Provider behavior and framework descriptions use the primary references below. Recheck availability, supported resource types, regional behavior, licensing and authoritative framework text before implementation.
 
 ## Framework and assessment references
 
@@ -38,6 +38,20 @@ Last source review: **2026-09-30**. The supplied role description is the require
 - [BigQuery policy tags](https://docs.cloud.google.com/bigquery/docs/best-practices-policy-tags): column-control concepts.
 - [Cloud Storage bucket API](https://docs.cloud.google.com/storage/docs/json_api/v1/buckets): provider adapter schema.
 - [Bucket Lock](https://docs.cloud.google.com/storage/docs/bucket-lock): retention-lock behavior.
+
+## Sources added for the deeper projects
+
+Checked 2026-10-02.
+
+- [45 CFR 164.308](https://www.law.cornell.edu/cfr/text/45/164.308) and [45 CFR 164.312](https://www.law.cornell.edu/cfr/text/45/164.312): Security Rule specifications and their required or addressable designations, used in Project 07.
+- [GitHub list pull requests associated with a commit](https://docs.github.com/en/rest/commits/commits#list-pull-requests-associated-with-a-commit) and [pull request reviews](https://docs.github.com/en/rest/pulls/reviews): the `commit_id` on each review supports the stale-approval test in UC-03.
+- [S3 GetBucketVersioning](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html): an empty response means versioning was never enabled.
+- [AWS Config managed rules](https://docs.aws.amazon.com/config/latest/developerguide/managed-rules-by-aws-config.html): rule names in the Project 02 baseline.
+- [KMS GetKeyRotationStatus](https://docs.aws.amazon.com/kms/latest/APIReference/API_GetKeyRotationStatus.html): `RotationPeriodInDays` used in UC-05.
+- [Prevent Shared Key authorization](https://learn.microsoft.com/en-us/azure/storage/common/shared-key-authorization-prevent): a null `AllowSharedKeyAccess` permits Shared Key requests.
+- [Resource Graph large data sets](https://learn.microsoft.com/en-us/azure/governance/resource-graph/concepts/work-with-data): `totalRecords`, `$skipToken` and the 1,000-record page limit behind DF-02.
+- [Cloud Storage organization policy constraints](https://docs.cloud.google.com/storage/docs/org-policy-constraints) and [CMEK organization policy](https://docs.cloud.google.com/kms/docs/cmek-org-policy): constraint names in the Project 02 baseline.
+- [Cloud Audit Logs](https://docs.cloud.google.com/logging/docs/audit): Admin Activity logs are always written. Data Access logs are off by default except for BigQuery.
 
 ## Publishing
 

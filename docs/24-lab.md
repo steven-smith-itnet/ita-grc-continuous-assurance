@@ -70,6 +70,15 @@ PYTHONPATH=src python3 -m assurance run --as-of 2026-09-30T12:00:00Z --strict
 
 Exit code 2 means at least one FAIL or UNKNOWN. Exit code 1 indicates invalid input or integrity errors. Exit code 0 in ordinary demo mode means the evaluation completed, not that all controls passed. CI should use strict mode only with the expected gating policy and should separately test deliberately failing fixtures.
 
+## Run the deeper projects
+
+```bash
+PYTHONPATH=src python3 -m assurance projects --as-of 2026-09-30T12:00:00Z
+PYTHONPATH=src python3 -m assurance verify artifacts/projects/03-control-evaluation
+```
+
+The command writes one verifiable bundle per project under `artifacts/projects/` and prints a headline for each. The [projects overview](../projects/README.md) lists the expected results. Project 01 should report 59 results: 21 PASS, 21 FAIL, 8 UNKNOWN and 9 NOT_APPLICABLE.
+
 ## Build and serve the presentation site
 
 ```bash

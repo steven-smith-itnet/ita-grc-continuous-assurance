@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://grc/exception-register",
+  "exclusions": [
+    {"id": "EX-BG-01", "account_id": "bg-azure-01", "status": "approved", "owner": "identity-platform", "approver": "ciso-delegate", "approved_at": "2026-07-01T00:00:00Z", "expires_at": "2027-01-01T00:00:00Z", "compensating_control": "Hardware key in sealed custody, sign-in alert to the SOC, quarterly test of the break-glass procedure"}
+  ]
+}

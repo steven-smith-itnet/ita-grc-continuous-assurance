@@ -43,9 +43,9 @@
     "title": "A complete evidence chain",
     "lead": "Every conclusion has an identifiable path.",
     "points": [
-      "Requirement \u2192 risk \u2192 control \u2192 implementation.",
-      "Test \u2192 evidence \u2192 finding \u2192 corrective action.",
-      "Independent retest \u2192 management decision."
+      "Requirement → risk → control → implementation.",
+      "Test → evidence → finding → corrective action.",
+      "Independent retest → management decision."
     ],
     "notes": "Use the architecture diagram in the handbook. Describe separate collection, storage and approval trust boundaries."
   },
@@ -133,8 +133,8 @@
     "title": "The reproducible result",
     "lead": "One dataset drives the report and dashboard.",
     "points": [
-      "9 assets \u00d7 14 controls = 126 evaluated pairs.",
-      "87 PASS \u00b7 9 FAIL \u00b7 12 UNKNOWN \u00b7 18 NOT_APPLICABLE.",
+      "9 assets × 14 controls = 126 evaluated pairs.",
+      "87 PASS · 9 FAIL · 12 UNKNOWN · 18 NOT_APPLICABLE.",
       "88.89% evaluated coverage and 80.56% passing share of applicable pairs."
     ],
     "notes": "These counts describe the fixed synthetic fixture. They are not organizational compliance results or a risk-weighted score."
@@ -188,6 +188,46 @@
       "Retain deterministic states and human approval for consequential decisions."
     ],
     "notes": "No model APIs are called by the demo. Agentic workflows are a proposed extension with bounded tools and reviewed access."
+  },
+  {
+    "title": "Seven projects from the role's priorities",
+    "lead": "Each priority in the hiring notes became runnable work with expected results.",
+    "points": [
+      "Use cases, configuration drift, control evaluation and evidence data flows.",
+      "Remediation verification, audit process testing and SOC 2-first coverage.",
+      "Every project carries provider-native fixtures for AWS, Azure and GCP."
+    ],
+    "notes": "Open the projects page. Each card shows the role priority it answers, the headline result and the downloadable bundle. The base lab tests supplied facts; the projects test where those facts come from."
+  },
+  {
+    "title": "Derive the fact, then test the test",
+    "lead": "A control result should come from source records, and its logic should catch known faults.",
+    "points": [
+      "Eight use cases join HR, identity, CI/CD, backup, scanner and cloud records: 21 pass, 21 fail, 8 unknown.",
+      "An IdP-only leaver check passes a worker whose AWS access key stayed active.",
+      "109 seeded faults: production logic catches all, four weaker candidates each miss several."
+    ],
+    "notes": "Walk through worker W-1005 in Project 01, then the naive leaver candidate in Project 03. The point is that a plausible control can look fine on clean data and still hide exceptions. Note that the same author wrote the vectors, so independent review of the vectors matters."
+  },
+  {
+    "title": "Follow the evidence to the control",
+    "lead": "A pass on incomplete or altered data is not a pass.",
+    "points": [
+      "Four pipelines reconciled hop by hop: three defective, one reliable.",
+      "A dropped UTC offset turned a 27.5-hour removal into an apparent 22-hour pass.",
+      "One storage baseline across three clouds, with drift classified by change record."
+    ],
+    "notes": "Show DF-04 in Project 04, then the recomputed W-1004 result. Then show the unauthorized change to aws-records-01 in Project 02 and the matching CloudTrail event the SIEM never received in DF-01."
+  },
+  {
+    "title": "Close on evidence, and test the audit itself",
+    "lead": "Remediation and audit work have their own failure modes.",
+    "points": [
+      "Closure needs independent, sustained retests and a fix at the source: 1 of 6 findings is eligible.",
+      "Automatic remediation looped against an approved change and touched an exempt bucket.",
+      "A sample of 25 found 1 of 3 planted deviations. Testing every item found all 3."
+    ],
+    "notes": "Use Project 05 to show why a single passing screenshot does not close a finding. Use Project 06 to show population reconciliation before sampling, then sampling risk next to full-population testing. Close with the SOC 2 coverage backlog from Project 07."
   },
   {
     "title": "A practical path to production",

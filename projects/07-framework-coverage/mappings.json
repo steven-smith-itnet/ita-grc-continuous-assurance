@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "note": "Candidate mappings for Projects 02 to 06. Use-case mappings live in projects/01-control-automation/usecases.json.",
+  "mappings": [
+    {
+      "id": "P02",
+      "project": "02",
+      "name": "Configuration baseline and drift",
+      "frameworks": {
+        "soc2": [
+          {
+            "id": "CC7.1",
+            "coverage": "partial"
+          },
+          {
+            "id": "CC8.1",
+            "coverage": "partial"
+          },
+          {
+            "id": "CC6.1",
+            "coverage": "partial"
+          }
+        ],
+        "iso27001_2022": [
+          {
+            "id": "A.8.9",
+            "coverage": "partial"
+          },
+          {
+            "id": "A.8.32",
+            "coverage": "contextual"
+          },
+          {
+            "id": "A.5.23",
+            "coverage": "contextual"
+          }
+        ],
+        "hipaa": [
+          {
+            "id": "164.312(a)(1)",
+            "coverage": "partial"
+          },
+          {
+            "id": "164.312(c)(1)",
+            "coverage": "contextual"
+          }
+        ]
+      }
+    },
+    {
+      "id": "P03",
+      "project": "03",
+      "name": "Control evaluation with seeded faults",
+      "frameworks": {
+        "soc2": [
+          {
+            "id": "CC4.1",
+            "coverage": "partial"
+          },
+          {
+            "id": "CC5.2",
+            "coverage": "contextual"
+          }
+        ],
+        "iso27001_2022": [
+          {
+            "id": "9.1",
+            "coverage": "partial"
+          },
+          {
+            "id": "A.5.35",
+            "coverage": "contextual"
+          }
+        ],
+        "hipaa": [
+          {
+            "id": "164.308(a)(8)",
+            "coverage": "partial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "P04",
+      "project": "04",
+      "name": "Evidence data-flow testing",
+      "frameworks": {
+        "soc2": [
+          {
+            "id": "CC2.1",
+            "coverage": "partial"
+          },
+          {
+            "id": "CC7.2",
+            "coverage": "contextual"
+          }
+        ],
+        "iso27001_2022": [
+          {
+            "id": "9.1",
+            "coverage": "contextual"
+          },
+          {
+            "id": "A.8.15",
+            "coverage": "contextual"
+          },
+          {
+            "id": "A.8.16",
+            "coverage": "contextual"
+          }
+        ],
+        "hipaa": [
+          {
+            "id": "164.312(b)",
+            "coverage": "contextual"
+          },
+          {
+            "id": "164.312(c)(1)",
+            "coverage": "contextual"
+          }
+        ]
+      }
+    },
+    {
+      "id": "P05",
+      "project": "05",
+      "name": "Remediation verification",
+      "frameworks": {
+        "soc2": [
+          {
+            "id": "CC4.2",
+            "coverage": "partial"
+          }
+        ],
+        "iso27001_2022": [
+          {
+            "id": "10.2",
+            "coverage": "partial"
+          }
+        ],
+        "hipaa": [
+          {
+            "id": "164.308(a)(1)(ii)(B)",
+            "coverage": "contextual"
+          }
+        ]
+      }
+    },
+    {
+      "id": "P06",
+      "project": "06",
+      "name": "Audit process testing",
+      "frameworks": {
+        "soc2": [
+          {
+            "id": "CC4.1",
+            "coverage": "contextual"
+          }
+        ],
+        "iso27001_2022": [
+          {
+            "id": "9.2",
+            "coverage": "partial"
+          },
+          {
+            "id": "A.5.35",
+            "coverage": "contextual"
+          },
+          {
+            "id": "A.5.36",
+            "coverage": "contextual"
+          }
+        ],
+        "hipaa": [
+          {
+            "id": "164.308(a)(8)",
+            "coverage": "contextual"
+          }
+        ]
+      }
+    }
+  ]
+}

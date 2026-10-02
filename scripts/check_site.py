@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
 from zipfile import ZipFile
+import hashlib
 import json
 import sys
 
@@ -53,9 +54,26 @@ def check(root):
     if result['synthetic'] is not True: errors.append('Public report is not synthetic')
     if result['summary']['counts'] != {'PASS':87, 'FAIL':9, 'UNKNOWN':12, 'NOT_APPLICABLE':18}:
         errors.append('Fixture counts changed: update and review presentation claims')
+    summary = json.loads((root / 'data/projects/summary.json').read_text())
+    if summary.get('synthetic') is not True or len(summary['projects']) != 7:
+        errors.append('Project summary missing, incomplete or not synthetic')
+    expected = {'01-control-automation': {'PASS': 21, 'FAIL': 21, 'UNKNOWN': 8, 'NOT_APPLICABLE': 9},
+                '02-configuration-drift': {'PASS': 17, 'FAIL': 3, 'UNKNOWN': 1, 'NOT_APPLICABLE': 3}}
+    for slug, counts in expected.items():
+        if summary['projects'].get(slug, {}).get('summary', {}).get('counts') != counts:
+            errors.append(f'Project {slug} counts changed: update and review the project write-up and slides')
+    for slug in summary['projects']:
+        folder = root / 'data/projects' / slug
+        manifest = json.loads((folder / 'manifest.json').read_text())
+        for name, digest in manifest['sha256'].items():
+            if hashlib.sha256((folder / name).read_bytes()).hexdigest() != digest:
+                errors.append(f'Project bundle hash mismatch: {slug}/{name}')
+    with ZipFile(root / 'source.zip') as archive:
+        if 'techgrc-continuous-assurance/projects/README.md' not in archive.namelist():
+            errors.append('Projects missing from the source package')
     if errors:
         raise SystemExit('\n'.join(errors))
-    print(f'Validated {len(pages)} HTML pages, local links/anchors, source package and synthetic result counts.')
+    print(f'Validated {len(pages)} HTML pages, local links/anchors, source package, project bundles and synthetic result counts.')
 
 if __name__ == '__main__':
     check(Path(sys.argv[1] if len(sys.argv)>1 else 'site'))

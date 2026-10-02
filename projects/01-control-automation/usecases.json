@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "catalog": "Acme TechGRC control automation use cases",
+  "version": "1.0",
+  "note": "Fictional Acme policy values and candidate framework mappings. Mappings require review against the authoritative text by the control steward and the assessor.",
+  "usecases": [
+    {
+      "id": "UC-01",
+      "name": "Leaver access removal",
+      "implementation": "leaver_access",
+      "replaces_supplied_fact": "IAM-02 access_removals_complete",
+      "objective": "Access for terminated workers is removed from the identity provider and from cloud-native credentials within the Acme SLA.",
+      "risk": "A former worker, or anyone holding their credential, keeps access to production data after termination.",
+      "control_type": "detective",
+      "automation": "Fully automated test with human triage of failures",
+      "frequency": "Daily, plus on each HR termination event",
+      "population": "Workers whose HR status is terminated with an effective time at or before the as-of time",
+      "parameters": {"sla_hours": 24},
+      "sources": [
+        {"system": "HR system of record", "record": "Worker status and termination effective time with UTC offset", "access": "Read-only report integration"},
+        {"system": "Identity provider", "record": "Account enabled state, disable time and worker ID", "access": "Read-only directory API"},
+        {"provider": "aws", "record": "IAM credential report: access_key_1_active, access_key_1_last_used_date, password_enabled", "api": "aws iam generate-credential-report, aws iam get-credential-report"},
+        {"provider": "azure", "record": "Entra ID user accountEnabled and on-premises sync state; storage account shared keys are tracked separately", "api": "Microsoft Graph GET /users"},
+        {"provider": "gcp", "record": "User-managed service account keys created for the worker", "api": "gcloud iam service-accounts keys list --managed-by=user"}
+      ],
+      "logic": [
+        "Correlate each terminated worker to identity-provider accounts by worker ID and to cloud credentials by owner tag.",
+        "FAIL when an account is still enabled, was disabled later than the SLA, or a cloud-native credential remains active.",
+        "UNKNOWN when nothing correlates to the worker or a disable time is missing.",
+        "NOT_APPLICABLE when the termination is effective after the as-of time."
+      ],
+      "data_flows": ["DF-04"],
+      "itgc_dependencies": ["Change management over the use-case code and parameters", "Restricted write access to the HR-to-GRC integration mapping"],
+      "frameworks": {
+        "soc2": [{"id": "CC6.2", "coverage": "partial"}, {"id": "CC6.3", "coverage": "contextual"}],
+        "iso27001_2022": [{"id": "A.5.18", "coverage": "partial"}, {"id": "A.5.16", "coverage": "partial"}],
+        "hipaa": [{"id": "164.308(a)(3)(ii)(C)", "coverage": "partial"}]
+      },
+      "remediation": "Disable the account and revoke or delete each active credential, then find why the deprovisioning event did not reach that system.",
+      "retest": "Re-run on the affected worker from an independent collector identity and confirm no credential activity after the removal time.",
+      "limitations": "Correlation depends on worker IDs and owner tags. Shared or untagged credentials need a separate ownership control."
+    },
+    {
+      "id": "UC-02",
+      "name": "Privileged MFA enforcement",
+      "implementation": "privileged_mfa",
+      "replaces_supplied_fact": "IAM-01 privileged_mfa_verified",
+      "objective": "Every enabled account in a cloud administrator group is covered by an enforcing MFA policy and holds a strong method.",
+      "risk": "A stolen password alone grants administrative control of a cloud environment.",
+      "control_type": "preventive control, detective test",
+      "automation": "Fully automated test",
+      "frequency": "Daily",
+      "population": "Enabled identity-provider accounts in the AWS, Azure and GCP administrator groups",
+      "parameters": {
+        "privileged_groups": {"aws-admins": "aws", "azure-owners": "azure", "gcp-org-admins": "gcp"},
+        "weak_methods": ["sms", "voice"]
+      },
+      "sources": [
+        {"system": "Identity provider", "record": "Group membership, MFA policy assignment result and registered methods", "access": "Read-only directory and reporting API"},
+        {"provider": "aws", "record": "IAM Identity Center permission-set assignments that map groups to accounts", "api": "aws sso-admin list-account-assignments"},
+        {"provider": "azure", "record": "Conditional Access policies and authentication method registration", "api": "Microsoft Graph /identity/conditionalAccess/policies and /reports/authenticationMethods/userRegistrationDetails"},
+        {"provider": "gcp", "record": "Organization IAM bindings for administrator groups", "api": "gcloud organizations get-iam-policy"}
+      ],
+      "logic": [
+        "Select enabled accounts holding at least one privileged group.",
+        "FAIL when no enforcing MFA policy applies, or only weak methods are registered.",
+        "Break-glass accounts need a valid, independently approved exclusion. Otherwise FAIL.",
+        "UNKNOWN when policy assignment or methods were not collected."
+      ],
+      "data_flows": [],
+      "itgc_dependencies": ["Change management over the privileged group list in the parameters"],
+      "frameworks": {
+        "soc2": [{"id": "CC6.1", "coverage": "partial"}],
+        "iso27001_2022": [{"id": "A.8.5", "coverage": "partial"}, {"id": "A.8.2", "coverage": "partial"}],
+        "hipaa": [{"id": "164.312(d)", "coverage": "partial"}]
+      },
+      "remediation": "Bring the account under the enforcing policy and register a strong method, or remove the privileged group.",
+      "retest": "Re-collect policy assignment and methods for the account and confirm a strong-method sign-in is required.",
+      "limitations": "Registration and policy assignment are inputs. The test does not replay a sign-in."
+    },
+    {
+      "id": "UC-03",
+      "name": "Production change approval",
+      "implementation": "change_approval",
+      "replaces_supplied_fact": "SDLC-01 change_approved and change_separation_verified",
+      "objective": "Each production deployment traces to a merged change approved by someone other than the author at the deployed commit.",
+      "risk": "Unreviewed or self-approved code reaches production.",
+      "control_type": "preventive control, detective test",
+      "automation": "Fully automated test over the full deployment population",
+      "frequency": "On each deployment, summarized daily",
+      "population": "Deployments to production in the period across AWS, Azure and GCP pipelines",
+      "parameters": {"emergency_review_hours": 72},
+      "sources": [
+        {"system": "CD deployment log", "record": "Deployment ID, environment, commit SHA, deployer and time", "access": "Read-only API"},
+        {"system": "GitHub", "record": "Pull requests associated with a commit, reviews with state and commit_id", "api": "GET /repos/{owner}/{repo}/commits/{sha}/pulls and GET /repos/{owner}/{repo}/pulls/{n}/reviews"},
+        {"system": "Azure Repos", "record": "Pull request reviewers and votes; branch policy allowing requestors to approve their own changes", "api": "Azure DevOps Git pull requests REST API"},
+        {"system": "ITSM", "record": "Emergency change records with retrospective approval", "access": "Read-only API"}
+      ],
+      "logic": [
+        "Trace each production deployment's commit SHA to a merged pull request.",
+        "FAIL when there is no approval, the only approval is the author's, or the approval predates the final commit.",
+        "A deployment without a pull request passes only with an emergency change approved by someone else within the window.",
+        "UNKNOWN when the deployment record lacks a commit SHA."
+      ],
+      "data_flows": [],
+      "itgc_dependencies": ["Repository branch protection is itself monitored under the configuration baseline"],
+      "frameworks": {
+        "soc2": [{"id": "CC8.1", "coverage": "partial"}],
+        "iso27001_2022": [{"id": "A.8.32", "coverage": "partial"}, {"id": "A.8.25", "coverage": "contextual"}],
+        "hipaa": [{"id": "164.308(a)(1)(ii)(B)", "coverage": "contextual"}]
+      },
+      "remediation": "Obtain retrospective review of the deployed change, and enforce branch protection that blocks self-approval and stale approval.",
+      "retest": "Test the next deployments from the same repository and confirm the branch policy setting through its API.",
+      "limitations": "Proves traceability and independent approval. It does not judge review quality or test adequacy."
+    },
+    {
+      "id": "UC-04",
+      "name": "Audit log coverage and delivery",
+      "implementation": "audit_logging",
+      "replaces_supplied_fact": "LOG-01 data_access_logging and log_canary_received",
+      "objective": "Each cloud scope exports audit logs, and a canary event reaches the monitored destination within the SLO.",
+      "risk": "Security-relevant activity is not recorded, or is recorded but never reaches the people who monitor it.",
+      "control_type": "detective",
+      "automation": "Fully automated configuration test plus an injected canary event",
+      "frequency": "Hourly canary, daily configuration test",
+      "population": "Declared AWS accounts, Azure subscriptions and GCP projects",
+      "parameters": {"canary_slo_minutes": 15, "gcp_ephi_services": ["storage.googleapis.com"]},
+      "sources": [
+        {"provider": "aws", "record": "Trail IsMultiRegionTrail and IsLogging", "api": "aws cloudtrail describe-trails, aws cloudtrail get-trail-status"},
+        {"provider": "azure", "record": "Subscription diagnostic settings and enabled log categories", "api": "az monitor diagnostic-settings subscription list"},
+        {"provider": "gcp", "record": "Log sinks and IAM policy auditConfigs for Data Access logs", "api": "gcloud logging sinks list, gcloud projects get-iam-policy"},
+        {"system": "SIEM", "record": "Canary event receipt time", "access": "Read-only search API"}
+      ],
+      "logic": [
+        "Apply the provider-specific configuration predicate.",
+        "For GCP projects hosting ePHI, require DATA_READ and DATA_WRITE audit logs for Cloud Storage.",
+        "Emit a canary event and FAIL when it does not arrive, or arrives after the SLO.",
+        "UNKNOWN when configuration or canary results were not collected."
+      ],
+      "data_flows": ["DF-01"],
+      "itgc_dependencies": ["Change management over SIEM ingestion filters", "Monitoring of the canary job itself"],
+      "frameworks": {
+        "soc2": [{"id": "CC7.2", "coverage": "partial"}],
+        "iso27001_2022": [{"id": "A.8.15", "coverage": "partial"}, {"id": "A.8.16", "coverage": "partial"}],
+        "hipaa": [{"id": "164.312(b)", "coverage": "partial"}, {"id": "164.308(a)(1)(ii)(D)", "coverage": "contextual"}]
+      },
+      "remediation": "Restore the export configuration or the delivery path, then backfill missing events where the source retains them.",
+      "retest": "Emit a new canary and reconcile a full hour of source events against the destination.",
+      "limitations": "A canary proves one path for one event type. It does not show that every event type survives ingestion filters. See DF-01."
+    },
+    {
+      "id": "UC-05",
+      "name": "ePHI encryption with customer-managed keys",
+      "implementation": "ephi_encryption",
+      "replaces_supplied_fact": "KEY-01 customer_managed_key",
+      "objective": "Datastores tagged as holding ePHI are encrypted with an enabled customer-managed key that rotates within the Acme limit.",
+      "risk": "ePHI is protected only by provider-managed keys that Acme cannot revoke, or by keys that never rotate.",
+      "control_type": "preventive control, detective test",
+      "automation": "Fully automated test",
+      "frequency": "Daily",
+      "population": "All declared datastores. Only those tagged ephi are in scope",
+      "parameters": {"data_tag": "ephi", "max_rotation_days": 365},
+      "sources": [
+        {"provider": "aws", "record": "Bucket or database encryption settings, KMS KeyManager, KeyState and rotation", "api": "aws s3api get-bucket-encryption, aws rds describe-db-instances, aws kms describe-key, aws kms get-key-rotation-status"},
+        {"provider": "azure", "record": "Storage or database encryption keySource and Key Vault key rotation policy", "api": "az storage account show, az keyvault key rotation-policy show"},
+        {"provider": "gcp", "record": "Default KMS key name and CryptoKey rotationPeriod", "api": "Cloud Storage buckets.get, gcloud kms keys describe"}
+      ],
+      "logic": [
+        "NOT_APPLICABLE unless the reviewed classification includes the ephi tag.",
+        "FAIL when encryption is off, the key is provider-managed, the key is not enabled, or rotation exceeds the limit.",
+        "UNKNOWN when encryption, key metadata or rotation was not collected."
+      ],
+      "data_flows": ["DF-03"],
+      "itgc_dependencies": ["Classification tags are reviewed by the data owner"],
+      "frameworks": {
+        "soc2": [{"id": "CC6.1", "coverage": "partial"}, {"id": "C1.1", "coverage": "contextual"}],
+        "iso27001_2022": [{"id": "A.8.24", "coverage": "partial"}],
+        "hipaa": [{"id": "164.312(a)(2)(iv)", "coverage": "partial"}]
+      },
+      "remediation": "Re-encrypt or migrate to a customer-managed key, and set rotation through infrastructure as code.",
+      "retest": "Re-collect encryption and key metadata from an independent identity.",
+      "limitations": "Customer-managed keys are a fictional Acme policy choice, not HIPAA text. HIPAA encryption at rest is an addressable specification."
+    },
+    {
+      "id": "UC-06",
+      "name": "Backup coverage and restore evidence",
+      "implementation": "backup_restore",
+      "replaces_supplied_fact": "BCP-01 and BCP-02 recovery facts",
+      "objective": "Tier 1 datastores have a recent recovery point and a recent restore exercise with integrity verified within the RTO.",
+      "risk": "Backups exist on paper but cannot restore the service within the committed objectives.",
+      "control_type": "corrective capability, detective test",
+      "automation": "Automated test over backup exports and the restore register",
+      "frequency": "Daily for recovery points, quarterly for restore exercises",
+      "population": "Declared datastores with criticality tier1",
+      "parameters": {"rpo_hours": 24, "rto_hours": 4, "restore_max_age_days": 90},
+      "sources": [
+        {"provider": "aws", "record": "Protected resources, recovery points and restore jobs", "api": "aws backup list-protected-resources, aws backup list-recovery-points-by-resource, aws backup list-restore-jobs"},
+        {"provider": "azure", "record": "Backup items and recovery points", "api": "az backup item list, az backup recoverypoint list"},
+        {"provider": "gcp", "record": "Backup and DR backup plans or Cloud SQL backups", "api": "gcloud sql backups list"},
+        {"system": "Restore register", "record": "Exercise time, elapsed hours and integrity verification", "access": "Controlled register"}
+      ],
+      "logic": [
+        "NOT_APPLICABLE unless the datastore is tier 1.",
+        "FAIL when there is no backup plan, the recovery point is older than the RPO, or there is no recent restore with integrity verified within the RTO.",
+        "UNKNOWN when the recovery point time or restore duration is missing."
+      ],
+      "data_flows": [],
+      "itgc_dependencies": ["The restore register is complete and controlled"],
+      "frameworks": {
+        "soc2": [{"id": "A1.2", "coverage": "partial"}, {"id": "A1.3", "coverage": "partial"}],
+        "iso27001_2022": [{"id": "A.8.13", "coverage": "partial"}],
+        "hipaa": [{"id": "164.308(a)(7)(ii)(A)", "coverage": "partial"}, {"id": "164.308(a)(7)(ii)(D)", "coverage": "partial"}]
+      },
+      "remediation": "Assign the datastore to a backup plan, fix the failing job, or schedule and record a representative restore.",
+      "retest": "Confirm a new recovery point and a restore record with integrity evidence.",
+      "limitations": "A single restore of one datastore does not prove recovery of the whole service."
+    },
+    {
+      "id": "UC-07",
+      "name": "Vulnerability remediation within SLA",
+      "implementation": "vulnerability_sla",
+      "replaces_supplied_fact": "VUL-01 overdue_critical_vulnerabilities",
+      "objective": "Scanned compute assets have no open critical or high finding older than the Acme SLA.",
+      "risk": "Known exploitable weaknesses stay open past the agreed window, or unscanned assets look clean.",
+      "control_type": "detective",
+      "automation": "Fully automated test with scan-coverage gating",
+      "frequency": "Daily",
+      "population": "Declared compute assets across AWS, Azure and GCP",
+      "parameters": {"scan_max_age_days": 7, "sla_days": {"critical": 15, "high": 30}},
+      "sources": [
+        {"provider": "aws", "record": "Inspector findings with severity, status and first observed time", "api": "aws inspector2 list-findings"},
+        {"provider": "azure", "record": "Defender for Cloud assessments in the securityresources table", "api": "Azure Resource Graph query"},
+        {"provider": "gcp", "record": "Security Command Center vulnerability findings", "api": "gcloud scc findings list"}
+      ],
+      "logic": [
+        "UNKNOWN when the asset was not scanned within the window, because a missing scan looks like a clean result.",
+        "FAIL for each open critical or high finding older than its SLA, even when the scan is stale."
+      ],
+      "data_flows": ["DF-02"],
+      "itgc_dependencies": ["SLA values are approved by management", "Scanner coverage is reconciled to the asset inventory"],
+      "frameworks": {
+        "soc2": [{"id": "CC7.1", "coverage": "partial"}],
+        "iso27001_2022": [{"id": "A.8.8", "coverage": "partial"}],
+        "hipaa": [{"id": "164.308(a)(1)(ii)(B)", "coverage": "contextual"}]
+      },
+      "remediation": "Patch or rebuild from a fixed image, or record a time-bound exception.",
+      "retest": "Rescan the asset and every asset built from the same image.",
+      "limitations": "The SLA values are fictional Acme policy values, not framework requirements."
+    },
+    {
+      "id": "UC-08",
+      "name": "Privileged access review completeness",
+      "implementation": "access_review",
+      "replaces_supplied_fact": "IAM-02 access_review_at",
+      "objective": "Quarterly privileged access reviews cover the full group, are decided by someone other than the account holder, and revocations take effect.",
+      "risk": "A review is marked complete while accounts were left out, self-approved, or never actually removed.",
+      "control_type": "detective",
+      "automation": "Hybrid: human review decisions, automated completeness and follow-through test",
+      "frequency": "Quarterly",
+      "population": "Q3 2026 review campaigns for each privileged group",
+      "parameters": {},
+      "sources": [
+        {"system": "Identity governance tool", "record": "Campaign items, reviewers, decisions and completion time", "api": "Microsoft Graph /identityGovernance/accessReviews/definitions, or the review tool export"},
+        {"system": "Identity provider", "record": "Group membership snapshot at campaign start and current membership", "access": "Read-only directory API"}
+      ],
+      "logic": [
+        "Reconcile campaign items to the membership snapshot taken at campaign start.",
+        "FAIL when members are missing from the review, items are undecided or self-reviewed, revocations did not take effect, or the campaign finished late.",
+        "UNKNOWN when no membership snapshot exists."
+      ],
+      "data_flows": [],
+      "itgc_dependencies": ["Snapshot job runs at campaign start and is retained"],
+      "frameworks": {
+        "soc2": [{"id": "CC6.2", "coverage": "partial"}, {"id": "CC6.3", "coverage": "partial"}],
+        "iso27001_2022": [{"id": "A.5.18", "coverage": "partial"}, {"id": "A.8.2", "coverage": "partial"}],
+        "hipaa": [{"id": "164.308(a)(4)(ii)(C)", "coverage": "partial"}]
+      },
+      "remediation": "Review the missing accounts, execute pending revocations and reassign self-reviewed items.",
+      "retest": "Re-run against current membership and the next campaign's snapshot.",
+      "limitations": "Tests completeness and follow-through. It does not judge whether each keep decision was appropriate."
+    }
+  ]
+}

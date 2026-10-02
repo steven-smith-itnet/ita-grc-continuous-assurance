@@ -33,14 +33,20 @@ with sync_playwright() as p:
     page.fill('#chapter-search', 'Macie')
     assert page.locator('[data-chapter]:visible').count() > 1
     assert page.locator('[data-chapter]:visible').count() < 31
+    page.goto(args.url + 'projects.html', wait_until='networkidle')
+    assert page.locator('.project-card').count() == 7
+    page.goto(args.url + 'projects/04-evidence-data-flow/README.html', wait_until='networkidle')
+    page.fill('#chapter-search', 'sampling')
+    assert 0 < page.locator('[data-chapter]:visible').count() < 8
     page.goto(args.url + 'presentation.html', wait_until='networkidle')
+    total = page.locator('.slide').count()
     assert page.locator('.slide:visible').count() == 1
     page.keyboard.press('ArrowRight')
-    assert page.locator('#slide-count').inner_text() == '2 / 20'
+    assert page.locator('#slide-count').inner_text() == f'2 / {total}'
     page.emulate_media(media='print')
-    assert page.locator('.slide:visible').count() == 20
+    assert page.locator('.slide:visible').count() == total
     page.emulate_media(media='screen')
-    for path in ['', 'dashboard.html', 'docs/06-aws.html', 'presentation.html', 'downloads.html']:
+    for path in ['', 'dashboard.html', 'projects.html', 'projects/01-control-automation/README.html', 'docs/06-aws.html', 'presentation.html', 'downloads.html']:
         page.set_viewport_size({'width':390, 'height':844})
         page.goto(args.url + path, wait_until='networkidle')
         assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth'), 'Horizontal overflow: ' + path
@@ -48,4 +54,4 @@ with sync_playwright() as p:
     page.screenshot(path=str(args.artifacts / 'mobile.png'), full_page=True)
     browser.close()
     assert not errors, errors
-print('Browser checks passed: dashboard, maturity controls, full-text search, slides, print layout and mobile overflow.')
+print('Browser checks passed: dashboard, projects, maturity controls, full-text search, slides, print layout and mobile overflow.')

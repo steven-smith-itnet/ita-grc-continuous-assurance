@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://grc/restore-register",
+  "collected_at": "2026-09-30T06:00:00Z",
+  "exercises": [
+    {"exercise_id": "RX-0811", "datastore_id": "aws-claims-db", "performed_at": "2026-08-21T15:00:00Z", "elapsed_hours": 2.5, "integrity_verified": true},
+    {"exercise_id": "RX-0812", "datastore_id": "aws-claims-docs", "performed_at": "2026-08-22T15:00:00Z", "elapsed_hours": 1.5, "integrity_verified": true},
+    {"exercise_id": "RX-0705", "datastore_id": "aws-member-portal-db", "performed_at": "2026-07-05T15:00:00Z", "elapsed_hours": 3.0, "integrity_verified": true},
+    {"exercise_id": "RX-0903", "datastore_id": "gcp-ehr-bucket", "performed_at": "2026-09-03T15:00:00Z", "elapsed_hours": 2.0, "integrity_verified": true}
+  ]
+}

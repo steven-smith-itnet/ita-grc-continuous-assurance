@@ -50,4 +50,8 @@ Proposed sensitive-data variants include ordinary business confidential records,
 7. A reader can distinguish tested code, unexecuted templates, and future architecture.
 8. The site can be served under a GitHub Pages project path or the existing portfolio site without a backend.
 
+## Deeper projects
+
+Supplementary hiring notes for the same role set clearer priorities: building control automation use cases, evaluating controls, testing how evidence reaches the control, testing remediation and audit processes, and SOC 2 first. Seven [deeper projects](../projects/README.md) answer those priorities with runnable code, three-cloud fixtures and expected results.
+
 Start with [the delivery phases](01-phases.md), then [inventory](02-inventory.md). Use [the lab](24-lab.md) for a short demonstration before reading the full implementation sequence.

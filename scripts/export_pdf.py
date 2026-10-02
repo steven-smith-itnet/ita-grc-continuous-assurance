@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export the browser presentation as a 20-page PDF. Requires optional Playwright."""
+"""Export the browser presentation as a PDF, one page per slide. Requires optional Playwright."""
 import argparse
 from pathlib import Path
 from playwright.sync_api import sync_playwright

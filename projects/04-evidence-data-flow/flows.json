@@ -1,0 +1,1169 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "description": "Evidence flows for Project 04. Each hop lists the records it holds and when each record arrived there.",
+  "flows": [
+    {
+      "id": "DF-01",
+      "name": "AWS CloudTrail to the SIEM",
+      "provider": "aws",
+      "slo_minutes": 15,
+      "description": "Management events for the production account. The SIEM ingestion filter was tuned to drop noisy S3 events and also drops S3 control-plane changes.",
+      "key_fields": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "eventSource"
+        },
+        {
+          "name": "eventTime",
+          "type": "timestamp"
+        },
+        {
+          "name": "recipientAccountId"
+        },
+        {
+          "name": "userIdentityArn"
+        }
+      ],
+      "canaries": [
+        "evt-canary-aws-01"
+      ],
+      "feeds": {
+        "usecase_id": "UC-04",
+        "entity_field": "recipientAccountId",
+        "entity_map": {
+          "111122223333": "aws-acct-prod"
+        }
+      },
+      "hops": [
+        {
+          "name": "CloudTrail event",
+          "system": "aws:cloudtrail",
+          "records": [
+            {
+              "id": "evt-01",
+              "at": "2026-09-30T07:02:00Z",
+              "fields": {
+                "eventName": "ConsoleLogin",
+                "eventSource": "signin.amazonaws.com",
+                "eventTime": "2026-09-30T07:02:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-02",
+              "at": "2026-09-30T07:15:00Z",
+              "fields": {
+                "eventName": "AssumeRole",
+                "eventSource": "sts.amazonaws.com",
+                "eventTime": "2026-09-30T07:15:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-03",
+              "at": "2026-09-30T07:40:00Z",
+              "fields": {
+                "eventName": "CreateAccessKey",
+                "eventSource": "iam.amazonaws.com",
+                "eventTime": "2026-09-30T07:40:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-04",
+              "at": "2026-09-30T08:05:00Z",
+              "fields": {
+                "eventName": "PutBucketPolicy",
+                "eventSource": "s3.amazonaws.com",
+                "eventTime": "2026-09-30T08:05:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-05",
+              "at": "2026-09-30T08:12:00Z",
+              "fields": {
+                "eventName": "PutBucketPublicAccessBlock",
+                "eventSource": "s3.amazonaws.com",
+                "eventTime": "2026-09-30T08:12:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-06",
+              "at": "2026-09-30T08:30:00Z",
+              "fields": {
+                "eventName": "AuthorizeSecurityGroupIngress",
+                "eventSource": "ec2.amazonaws.com",
+                "eventTime": "2026-09-30T08:30:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-07",
+              "at": "2026-09-30T09:01:00Z",
+              "fields": {
+                "eventName": "UpdateTrail",
+                "eventSource": "cloudtrail.amazonaws.com",
+                "eventTime": "2026-09-30T09:01:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-08",
+              "at": "2026-09-30T09:20:00Z",
+              "fields": {
+                "eventName": "ScheduleKeyDeletion",
+                "eventSource": "kms.amazonaws.com",
+                "eventTime": "2026-09-30T09:20:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-canary-aws-01",
+              "at": "2026-09-30T10:00:00Z",
+              "fields": {
+                "eventName": "CreateLogStream",
+                "eventSource": "logs.amazonaws.com",
+                "eventTime": "2026-09-30T10:00:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            }
+          ]
+        },
+        {
+          "name": "S3 log archive",
+          "system": "aws:s3 log-archive account",
+          "records": [
+            {
+              "id": "evt-01",
+              "at": "2026-09-30T07:06:00Z",
+              "fields": {
+                "eventName": "ConsoleLogin",
+                "eventSource": "signin.amazonaws.com",
+                "eventTime": "2026-09-30T07:02:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-02",
+              "at": "2026-09-30T07:19:00Z",
+              "fields": {
+                "eventName": "AssumeRole",
+                "eventSource": "sts.amazonaws.com",
+                "eventTime": "2026-09-30T07:15:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-03",
+              "at": "2026-09-30T07:44:00Z",
+              "fields": {
+                "eventName": "CreateAccessKey",
+                "eventSource": "iam.amazonaws.com",
+                "eventTime": "2026-09-30T07:40:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-04",
+              "at": "2026-09-30T08:09:00Z",
+              "fields": {
+                "eventName": "PutBucketPolicy",
+                "eventSource": "s3.amazonaws.com",
+                "eventTime": "2026-09-30T08:05:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-05",
+              "at": "2026-09-30T08:16:00Z",
+              "fields": {
+                "eventName": "PutBucketPublicAccessBlock",
+                "eventSource": "s3.amazonaws.com",
+                "eventTime": "2026-09-30T08:12:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-06",
+              "at": "2026-09-30T08:34:00Z",
+              "fields": {
+                "eventName": "AuthorizeSecurityGroupIngress",
+                "eventSource": "ec2.amazonaws.com",
+                "eventTime": "2026-09-30T08:30:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-07",
+              "at": "2026-09-30T09:05:00Z",
+              "fields": {
+                "eventName": "UpdateTrail",
+                "eventSource": "cloudtrail.amazonaws.com",
+                "eventTime": "2026-09-30T09:01:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-08",
+              "at": "2026-09-30T09:24:00Z",
+              "fields": {
+                "eventName": "ScheduleKeyDeletion",
+                "eventSource": "kms.amazonaws.com",
+                "eventTime": "2026-09-30T09:20:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-canary-aws-01",
+              "at": "2026-09-30T10:04:00Z",
+              "fields": {
+                "eventName": "CreateLogStream",
+                "eventSource": "logs.amazonaws.com",
+                "eventTime": "2026-09-30T10:00:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            }
+          ]
+        },
+        {
+          "name": "SIEM index",
+          "system": "siem:atlas-security",
+          "records": [
+            {
+              "id": "evt-01",
+              "at": "2026-09-30T07:08:00Z",
+              "fields": {
+                "eventName": "ConsoleLogin",
+                "eventSource": "signin.amazonaws.com",
+                "eventTime": "2026-09-30T07:02:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-02",
+              "at": "2026-09-30T07:21:00Z",
+              "fields": {
+                "eventName": "AssumeRole",
+                "eventSource": "sts.amazonaws.com",
+                "eventTime": "2026-09-30T07:15:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-03",
+              "at": "2026-09-30T07:46:00Z",
+              "fields": {
+                "eventName": "CreateAccessKey",
+                "eventSource": "iam.amazonaws.com",
+                "eventTime": "2026-09-30T07:40:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-04",
+              "at": "2026-09-30T08:11:00Z",
+              "fields": {
+                "eventName": "PutBucketPolicy",
+                "eventSource": "s3.amazonaws.com",
+                "eventTime": "2026-09-30T08:05:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-06",
+              "at": "2026-09-30T08:36:00Z",
+              "fields": {
+                "eventName": "AuthorizeSecurityGroupIngress",
+                "eventSource": "ec2.amazonaws.com",
+                "eventTime": "2026-09-30T08:30:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-07",
+              "at": "2026-09-30T09:07:00Z",
+              "fields": {
+                "eventName": "UpdateTrail",
+                "eventSource": "cloudtrail.amazonaws.com",
+                "eventTime": "2026-09-30T09:01:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-08",
+              "at": "2026-09-30T09:26:00Z",
+              "fields": {
+                "eventName": "ScheduleKeyDeletion",
+                "eventSource": "kms.amazonaws.com",
+                "eventTime": "2026-09-30T09:20:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            },
+            {
+              "id": "evt-canary-aws-01",
+              "at": "2026-09-30T10:06:00Z",
+              "fields": {
+                "eventName": "CreateLogStream",
+                "eventSource": "logs.amazonaws.com",
+                "eventTime": "2026-09-30T10:00:00Z",
+                "recipientAccountId": "111122223333",
+                "userIdentityArn": "arn:aws:sts::111122223333:assumed-role/synthetic-operator/session"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DF-02",
+      "name": "Azure Defender for Cloud findings to the GRC platform",
+      "provider": "azure",
+      "slo_minutes": 1440,
+      "description": "Daily Resource Graph export of the securityresources table. The extraction job read the first page and ignored the continuation token.",
+      "key_fields": [
+        {
+          "name": "resource"
+        },
+        {
+          "name": "severity"
+        },
+        {
+          "name": "status"
+        },
+        {
+          "name": "firstEvaluationDate",
+          "type": "timestamp"
+        }
+      ],
+      "canaries": [],
+      "feeds": {
+        "usecase_id": "UC-07",
+        "entity_field": "resource",
+        "entity_scope": [
+          "azure-vm-intake-01",
+          "azure-vm-web-01"
+        ]
+      },
+      "hops": [
+        {
+          "name": "Resource Graph query result",
+          "system": "azure:resource-graph",
+          "declared_total": 12,
+          "records": [
+            {
+              "id": "az-assess-01",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "High",
+                "status": "Unhealthy",
+                "firstEvaluationDate": "2026-08-16T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-02",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "Medium",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-03",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "Low",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-04",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "Medium",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-05",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "Low",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-06",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "Medium",
+                "status": "Unhealthy",
+                "firstEvaluationDate": "2026-07-01T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-07",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "Low",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-08",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "Medium",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-09",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "Low",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-10",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "High",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Evidence store",
+          "system": "azure:immutable blob container",
+          "records": [
+            {
+              "id": "az-assess-01",
+              "at": "2026-09-30T05:10:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "High",
+                "status": "Unhealthy",
+                "firstEvaluationDate": "2026-08-16T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-02",
+              "at": "2026-09-30T05:10:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "Medium",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-03",
+              "at": "2026-09-30T05:10:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "Low",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-04",
+              "at": "2026-09-30T05:10:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "Medium",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-05",
+              "at": "2026-09-30T05:10:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "Low",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-06",
+              "at": "2026-09-30T05:10:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "Medium",
+                "status": "Unhealthy",
+                "firstEvaluationDate": "2026-07-01T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-07",
+              "at": "2026-09-30T05:10:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "Low",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-08",
+              "at": "2026-09-30T05:10:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "Medium",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-09",
+              "at": "2026-09-30T05:10:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "Low",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-10",
+              "at": "2026-09-30T05:10:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "High",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            }
+          ]
+        },
+        {
+          "name": "GRC platform",
+          "system": "grc:control-results",
+          "records": [
+            {
+              "id": "az-assess-01",
+              "at": "2026-09-30T05:30:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "High",
+                "status": "Unhealthy",
+                "firstEvaluationDate": "2026-08-16T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-02",
+              "at": "2026-09-30T05:30:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "Medium",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-03",
+              "at": "2026-09-30T05:30:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "Low",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-04",
+              "at": "2026-09-30T05:30:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "Medium",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-05",
+              "at": "2026-09-30T05:30:00Z",
+              "fields": {
+                "resource": "azure-vm-intake-01",
+                "severity": "Low",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-06",
+              "at": "2026-09-30T05:30:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "Medium",
+                "status": "Unhealthy",
+                "firstEvaluationDate": "2026-07-01T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-07",
+              "at": "2026-09-30T05:30:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "Low",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-08",
+              "at": "2026-09-30T05:30:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "Medium",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-09",
+              "at": "2026-09-30T05:30:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "Low",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            },
+            {
+              "id": "az-assess-10",
+              "at": "2026-09-30T05:30:00Z",
+              "fields": {
+                "resource": "azure-vm-web-01",
+                "severity": "High",
+                "status": "Healthy",
+                "firstEvaluationDate": "2026-06-02T09:00:00Z"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DF-03",
+      "name": "GCP Cloud Asset Inventory to the evaluator",
+      "provider": "gcp",
+      "slo_minutes": 60,
+      "description": "Daily Cloud Asset Inventory export to BigQuery, read by the evaluator. A labeled canary bucket is created before each export.",
+      "key_fields": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "assetType"
+        },
+        {
+          "name": "defaultKmsKeyName"
+        },
+        {
+          "name": "updateTime",
+          "type": "timestamp"
+        }
+      ],
+      "canaries": [
+        "canary-gcp-asset-01"
+      ],
+      "feeds": {
+        "usecase_id": "UC-05",
+        "entity_field": "name"
+      },
+      "hops": [
+        {
+          "name": "Asset Inventory export",
+          "system": "gcp:cloudasset",
+          "declared_total": 6,
+          "records": [
+            {
+              "id": "gcp-ehr-bucket",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "name": "gcp-ehr-bucket",
+                "assetType": "storage.googleapis.com/Bucket",
+                "defaultKmsKeyName": "projects/synthetic-ehr/locations/us-central1/keyRings/ehr/cryptoKeys/ehr",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "gcp-ephi-archive",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "name": "gcp-ephi-archive",
+                "assetType": "storage.googleapis.com/Bucket",
+                "defaultKmsKeyName": "projects/synthetic-ehr/locations/us-central1/keyRings/ehr/cryptoKeys/archive",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "gcp-analytics",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "name": "gcp-analytics",
+                "assetType": "bigquery.googleapis.com/Dataset",
+                "defaultKmsKeyName": "",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "k-gcp-ehr",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "name": "k-gcp-ehr",
+                "assetType": "cloudkms.googleapis.com/CryptoKey",
+                "defaultKmsKeyName": "",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "k-gcp-archive",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "name": "k-gcp-archive",
+                "assetType": "cloudkms.googleapis.com/CryptoKey",
+                "defaultKmsKeyName": "",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "canary-gcp-asset-01",
+              "at": "2026-09-30T05:00:00Z",
+              "fields": {
+                "name": "canary-gcp-asset-01",
+                "assetType": "storage.googleapis.com/Bucket",
+                "defaultKmsKeyName": "",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            }
+          ]
+        },
+        {
+          "name": "BigQuery table",
+          "system": "gcp:bigquery assurance dataset",
+          "records": [
+            {
+              "id": "gcp-ehr-bucket",
+              "at": "2026-09-30T05:12:00Z",
+              "fields": {
+                "name": "gcp-ehr-bucket",
+                "assetType": "storage.googleapis.com/Bucket",
+                "defaultKmsKeyName": "projects/synthetic-ehr/locations/us-central1/keyRings/ehr/cryptoKeys/ehr",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "gcp-ephi-archive",
+              "at": "2026-09-30T05:12:00Z",
+              "fields": {
+                "name": "gcp-ephi-archive",
+                "assetType": "storage.googleapis.com/Bucket",
+                "defaultKmsKeyName": "projects/synthetic-ehr/locations/us-central1/keyRings/ehr/cryptoKeys/archive",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "gcp-analytics",
+              "at": "2026-09-30T05:12:00Z",
+              "fields": {
+                "name": "gcp-analytics",
+                "assetType": "bigquery.googleapis.com/Dataset",
+                "defaultKmsKeyName": "",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "k-gcp-ehr",
+              "at": "2026-09-30T05:12:00Z",
+              "fields": {
+                "name": "k-gcp-ehr",
+                "assetType": "cloudkms.googleapis.com/CryptoKey",
+                "defaultKmsKeyName": "",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "k-gcp-archive",
+              "at": "2026-09-30T05:12:00Z",
+              "fields": {
+                "name": "k-gcp-archive",
+                "assetType": "cloudkms.googleapis.com/CryptoKey",
+                "defaultKmsKeyName": "",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "canary-gcp-asset-01",
+              "at": "2026-09-30T05:12:00Z",
+              "fields": {
+                "name": "canary-gcp-asset-01",
+                "assetType": "storage.googleapis.com/Bucket",
+                "defaultKmsKeyName": "",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Evaluator input",
+          "system": "assurance:normalized observations",
+          "records": [
+            {
+              "id": "gcp-ehr-bucket",
+              "at": "2026-09-30T05:20:00Z",
+              "fields": {
+                "name": "gcp-ehr-bucket",
+                "assetType": "storage.googleapis.com/Bucket",
+                "defaultKmsKeyName": "projects/synthetic-ehr/locations/us-central1/keyRings/ehr/cryptoKeys/ehr",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "gcp-ephi-archive",
+              "at": "2026-09-30T05:20:00Z",
+              "fields": {
+                "name": "gcp-ephi-archive",
+                "assetType": "storage.googleapis.com/Bucket",
+                "defaultKmsKeyName": "projects/synthetic-ehr/locations/us-central1/keyRings/ehr/cryptoKeys/archive",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "gcp-analytics",
+              "at": "2026-09-30T05:20:00Z",
+              "fields": {
+                "name": "gcp-analytics",
+                "assetType": "bigquery.googleapis.com/Dataset",
+                "defaultKmsKeyName": "",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "k-gcp-ehr",
+              "at": "2026-09-30T05:20:00Z",
+              "fields": {
+                "name": "k-gcp-ehr",
+                "assetType": "cloudkms.googleapis.com/CryptoKey",
+                "defaultKmsKeyName": "",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "k-gcp-archive",
+              "at": "2026-09-30T05:20:00Z",
+              "fields": {
+                "name": "k-gcp-archive",
+                "assetType": "cloudkms.googleapis.com/CryptoKey",
+                "defaultKmsKeyName": "",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            },
+            {
+              "id": "canary-gcp-asset-01",
+              "at": "2026-09-30T05:20:00Z",
+              "fields": {
+                "name": "canary-gcp-asset-01",
+                "assetType": "storage.googleapis.com/Bucket",
+                "defaultKmsKeyName": "",
+                "updateTime": "2026-09-30T04:00:00Z"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DF-04",
+      "name": "HR terminations to the GRC evidence store",
+      "provider": "idp",
+      "slo_minutes": 1440,
+      "description": "Termination events flow from the HR system through an integration platform to the GRC evidence store that UC-01 reads. The India HR instance sends local time, and the integration mapping appends Z without converting it.",
+      "key_fields": [
+        {
+          "name": "worker_id"
+        },
+        {
+          "name": "status"
+        },
+        {
+          "name": "termination_effective_at",
+          "type": "timestamp"
+        }
+      ],
+      "canaries": [],
+      "feeds": {
+        "usecase_id": "UC-01",
+        "entity_field": "worker_id",
+        "recompute": {
+          "dataset": "hr_workers",
+          "collection": "workers",
+          "key": "worker_id"
+        }
+      },
+      "hops": [
+        {
+          "name": "HR system report",
+          "system": "hr:system of record",
+          "declared_total": 7,
+          "records": [
+            {
+              "id": "term-W-1002",
+              "at": "2026-09-09T20:00:00Z",
+              "fields": {
+                "worker_id": "W-1002",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-10T11:00:00-06:00"
+              }
+            },
+            {
+              "id": "term-W-1003",
+              "at": "2026-09-14T20:00:00Z",
+              "fields": {
+                "worker_id": "W-1003",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-15T11:00:00-06:00"
+              }
+            },
+            {
+              "id": "term-W-1004",
+              "at": "2026-09-19T08:00:00Z",
+              "fields": {
+                "worker_id": "W-1004",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-20T09:00:00+05:30"
+              }
+            },
+            {
+              "id": "term-W-1005",
+              "at": "2026-09-22T09:00:00Z",
+              "fields": {
+                "worker_id": "W-1005",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-23T01:00:00+02:00"
+              }
+            },
+            {
+              "id": "term-W-1006",
+              "at": "2026-09-24T20:00:00Z",
+              "fields": {
+                "worker_id": "W-1006",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-25T10:00:00-06:00"
+              }
+            },
+            {
+              "id": "term-W-1007",
+              "at": "2026-09-25T20:00:00Z",
+              "fields": {
+                "worker_id": "W-1007",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-26T06:00:00-06:00"
+              }
+            },
+            {
+              "id": "term-W-1008",
+              "at": "2026-09-29T20:00:00Z",
+              "fields": {
+                "worker_id": "W-1008",
+                "status": "terminated",
+                "termination_effective_at": "2026-10-02T18:00:00-06:00"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Integration platform",
+          "system": "ipaas:hr-to-grc mapping",
+          "records": [
+            {
+              "id": "term-W-1002",
+              "at": "2026-09-09T21:00:00Z",
+              "fields": {
+                "worker_id": "W-1002",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-10T17:00:00Z"
+              }
+            },
+            {
+              "id": "term-W-1003",
+              "at": "2026-09-14T21:00:00Z",
+              "fields": {
+                "worker_id": "W-1003",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-15T17:00:00Z"
+              }
+            },
+            {
+              "id": "term-W-1004",
+              "at": "2026-09-19T09:00:00Z",
+              "fields": {
+                "worker_id": "W-1004",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-20T09:00:00Z"
+              }
+            },
+            {
+              "id": "term-W-1005",
+              "at": "2026-09-22T10:00:00Z",
+              "fields": {
+                "worker_id": "W-1005",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-22T23:00:00Z"
+              }
+            },
+            {
+              "id": "term-W-1006",
+              "at": "2026-09-24T21:00:00Z",
+              "fields": {
+                "worker_id": "W-1006",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-25T16:00:00Z"
+              }
+            },
+            {
+              "id": "term-W-1007",
+              "at": "2026-09-25T21:00:00Z",
+              "fields": {
+                "worker_id": "W-1007",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-26T12:00:00Z"
+              }
+            },
+            {
+              "id": "term-W-1008",
+              "at": "2026-09-29T21:00:00Z",
+              "fields": {
+                "worker_id": "W-1008",
+                "status": "terminated",
+                "termination_effective_at": "2026-10-03T00:00:00Z"
+              }
+            }
+          ]
+        },
+        {
+          "name": "GRC evidence store",
+          "system": "grc:evidence/hr/workers-export",
+          "records": [
+            {
+              "id": "term-W-1002",
+              "at": "2026-09-09T22:00:00Z",
+              "fields": {
+                "worker_id": "W-1002",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-10T17:00:00Z"
+              }
+            },
+            {
+              "id": "term-W-1003",
+              "at": "2026-09-14T22:00:00Z",
+              "fields": {
+                "worker_id": "W-1003",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-15T17:00:00Z"
+              }
+            },
+            {
+              "id": "term-W-1004",
+              "at": "2026-09-19T10:00:00Z",
+              "fields": {
+                "worker_id": "W-1004",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-20T09:00:00Z"
+              }
+            },
+            {
+              "id": "term-W-1005",
+              "at": "2026-09-22T11:00:00Z",
+              "fields": {
+                "worker_id": "W-1005",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-22T23:00:00Z"
+              }
+            },
+            {
+              "id": "term-W-1006",
+              "at": "2026-09-24T22:00:00Z",
+              "fields": {
+                "worker_id": "W-1006",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-25T16:00:00Z"
+              }
+            },
+            {
+              "id": "term-W-1007",
+              "at": "2026-09-25T22:00:00Z",
+              "fields": {
+                "worker_id": "W-1007",
+                "status": "terminated",
+                "termination_effective_at": "2026-09-26T12:00:00Z"
+              }
+            },
+            {
+              "id": "term-W-1008",
+              "at": "2026-09-29T22:00:00Z",
+              "fields": {
+                "worker_id": "W-1008",
+                "status": "terminated",
+                "termination_effective_at": "2026-10-03T00:00:00Z"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

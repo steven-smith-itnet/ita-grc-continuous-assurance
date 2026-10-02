@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://cloud/compute-inventory",
+  "collected_at": "2026-09-30T06:00:00Z",
+  "assets": [
+    {"asset_id": "aws-vm-api-01", "provider": "aws", "image": "atlas-base:2026.09", "last_scanned_at": "2026-09-29T08:00:00Z"},
+    {"asset_id": "aws-vm-worker-01", "provider": "aws", "image": "atlas-base:2026.08", "last_scanned_at": "2026-09-29T08:00:00Z"},
+    {"asset_id": "azure-vm-intake-01", "provider": "azure", "image": "atlas-base:2026.07", "last_scanned_at": "2026-09-29T09:00:00Z"},
+    {"asset_id": "azure-vm-web-01", "provider": "azure", "image": "atlas-base:2026.09", "last_scanned_at": "2026-09-29T09:00:00Z"},
+    {"asset_id": "gcp-gke-pool-01", "provider": "gcp", "image": "atlas-base:2026.09", "last_scanned_at": "2026-09-29T10:00:00Z"},
+    {"asset_id": "gcp-vm-extract-01", "provider": "gcp", "image": "atlas-base:2026.08", "last_scanned_at": "2026-09-18T10:00:00Z"}
+  ]
+}

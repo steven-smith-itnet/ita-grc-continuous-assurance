@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://cloud/logging-config-and-canary",
+  "collected_at": "2026-09-30T11:00:00Z",
+  "scopes": [
+    {"scope_id": "aws-acct-prod", "provider": "aws", "account_id": "111122223333", "config": {"trails": [{"Name": "org-trail", "IsMultiRegionTrail": true, "IsLogging": true}]}, "canary": {"event_id": "evt-canary-aws-01", "emitted_at": "2026-09-30T10:00:00Z", "received_at": "2026-09-30T10:06:00Z"}},
+    {"scope_id": "aws-acct-shared", "provider": "aws", "account_id": "444455556666", "config": {"trails": [{"Name": "shared-trail", "IsMultiRegionTrail": false, "IsLogging": true}]}, "canary": {"event_id": "evt-canary-aws-02", "emitted_at": "2026-09-30T10:00:00Z", "received_at": "2026-09-30T10:05:00Z"}},
+    {"scope_id": "azure-sub-prod", "provider": "azure", "config": {"subscription_diagnostic_settings": [{"name": "to-siem", "workspaceId": "/subscriptions/synthetic/resourceGroups/sec/providers/Microsoft.OperationalInsights/workspaces/siem", "logs": [{"category": "Administrative", "enabled": true}, {"category": "Security", "enabled": true}]}]}, "canary": {"event_id": "evt-canary-az-01", "emitted_at": "2026-09-30T10:00:00Z", "received_at": "2026-09-30T10:09:00Z"}},
+    {"scope_id": "azure-sub-data", "provider": "azure", "config": {"subscription_diagnostic_settings": [{"name": "to-siem", "workspaceId": "/subscriptions/synthetic/resourceGroups/sec/providers/Microsoft.OperationalInsights/workspaces/siem", "logs": [{"category": "Administrative", "enabled": true}]}]}, "canary": {"event_id": "evt-canary-az-02", "emitted_at": "2026-09-30T10:00:00Z", "received_at": "2026-09-30T10:41:00Z"}},
+    {"scope_id": "gcp-proj-prod", "provider": "gcp", "hosts_ephi": true, "config": {"sinks": [{"name": "audit-to-siem", "destination": "pubsub.googleapis.com/projects/synthetic-sec/topics/siem", "filter": "logName:\"cloudaudit.googleapis.com\""}], "auditConfigs": [{"service": "storage.googleapis.com", "auditLogConfigs": [{"logType": "DATA_READ"}, {"logType": "DATA_WRITE"}]}]}, "canary": {"event_id": "evt-canary-gcp-01", "emitted_at": "2026-09-30T10:00:00Z", "received_at": "2026-09-30T10:04:00Z"}},
+    {"scope_id": "gcp-proj-ehr", "provider": "gcp", "hosts_ephi": true, "config": {"sinks": [{"name": "audit-to-siem", "destination": "pubsub.googleapis.com/projects/synthetic-sec/topics/siem", "filter": "logName:\"cloudaudit.googleapis.com\""}], "auditConfigs": []}, "canary": {"event_id": "evt-canary-gcp-02", "emitted_at": "2026-09-30T10:00:00Z", "received_at": "2026-09-30T10:03:00Z"}},
+    {"scope_id": "gcp-proj-analytics", "provider": "gcp", "hosts_ephi": false, "config": {"sinks": [{"name": "audit-to-siem", "destination": "pubsub.googleapis.com/projects/synthetic-sec/topics/siem", "filter": "logName:\"cloudaudit.googleapis.com\""}]}}
+  ]
+}

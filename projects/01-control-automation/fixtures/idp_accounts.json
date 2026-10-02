@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://idp/directory-export",
+  "collected_at": "2026-09-30T06:00:00Z",
+  "accounts": [
+    {"account_id": "u-1001", "worker_id": "W-1001", "enabled": true, "groups": ["aws-admins"], "mfa": {"policy_enforced": true, "methods": ["fido2"]}},
+    {"account_id": "u-1002", "worker_id": "W-1002", "enabled": false, "disabled_at": "2026-09-10T19:30:00Z", "groups": []},
+    {"account_id": "u-1003", "worker_id": "W-1003", "enabled": false, "disabled_at": "2026-09-17T09:00:00Z", "groups": []},
+    {"account_id": "u-1004", "worker_id": "W-1004", "enabled": false, "disabled_at": "2026-09-21T07:00:00Z", "groups": []},
+    {"account_id": "u-1005", "worker_id": "W-1005", "enabled": false, "disabled_at": "2026-09-23T08:00:00Z", "groups": []},
+    {"account_id": "u-1006", "worker_id": "W-1006", "enabled": true, "groups": []},
+    {"account_id": "u-1009", "worker_id": "W-1009", "enabled": true, "groups": ["azure-owners"], "mfa": {"policy_enforced": true, "methods": ["authenticator_app"]}},
+    {"account_id": "u-1010", "worker_id": "W-1010", "enabled": true, "groups": ["gcp-org-admins"], "mfa": {"policy_enforced": true, "methods": ["fido2", "sms"]}},
+    {"account_id": "u-1011", "worker_id": "W-1011", "enabled": true, "groups": ["aws-admins"], "mfa": {"policy_enforced": true, "methods": ["sms"]}},
+    {"account_id": "u-1012", "worker_id": "W-1012", "enabled": true, "groups": ["azure-owners"], "mfa": {"policy_enforced": false, "methods": ["authenticator_app"]}},
+    {"account_id": "u-1013", "worker_id": "W-1013", "enabled": true, "groups": ["gcp-org-admins"]},
+    {"account_id": "u-1014", "worker_id": "W-1014", "enabled": true, "groups": ["azure-owners"], "mfa": {"policy_enforced": true, "methods": ["fido2"]}},
+    {"account_id": "u-1015", "worker_id": "W-1015", "enabled": true, "groups": ["gcp-org-admins"], "mfa": {"policy_enforced": true, "methods": ["authenticator_app"]}},
+    {"account_id": "bg-aws-01", "enabled": true, "break_glass": true, "groups": ["aws-admins"], "mfa": {"policy_enforced": false, "methods": []}},
+    {"account_id": "bg-azure-01", "enabled": true, "break_glass": true, "groups": ["azure-owners"], "mfa": {"policy_enforced": false, "methods": ["fido2"]}},
+    {"account_id": "u-1016", "worker_id": "W-1016", "enabled": true, "groups": ["ephi-app-admins"], "mfa": {"policy_enforced": true, "methods": ["fido2"]}}
+  ]
+}

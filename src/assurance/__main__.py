@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 from .engine import evaluate
+from .projects import run_all, write as write_projects
 
 
 def read(path):
@@ -70,11 +71,20 @@ def main():
     run.add_argument("--strict", action="store_true", help="exit 2 for FAIL or UNKNOWN, including accepted risk")
     check = sub.add_parser("verify")
     check.add_argument("directory")
+    deeper = sub.add_parser("projects", help="run the seven deeper projects under projects/")
+    deeper.add_argument("--root", default=".")
+    deeper.add_argument("--as-of", required=True)
+    deeper.add_argument("--out", default="artifacts/projects")
     args = parser.parse_args()
     try:
         if args.command == "verify":
             verify(args.directory)
             print("Bundle hashes verified against local manifest (not proof of authenticity).")
+            return 0
+        if args.command == "projects":
+            summary = write_projects(run_all(args.root, args.as_of), args.out, args.as_of)
+            for slug, item in summary["projects"].items():
+                print(f"{slug}: {json.dumps(item['headline'])}")
             return 0
         scope, evidence, catalog, exceptions = map(read, (args.scope, args.evidence, args.catalog, args.exceptions))
         result = evaluate(scope, evidence, catalog, args.as_of, exceptions)

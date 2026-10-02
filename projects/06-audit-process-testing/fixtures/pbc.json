@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://grc/pbc-register",
+  "reliable_types": [
+    "system_report",
+    "system_export",
+    "api_export",
+    "ticket_export"
+  ],
+  "requests": [
+    {
+      "id": "PBC-01",
+      "control": "UC-03 change approval",
+      "owner": "engineering",
+      "evidence_type": "system_export",
+      "due_at": "2026-08-14T00:00:00Z",
+      "delivered_at": "2026-08-12T00:00:00Z",
+      "covers_from": "2026-01-01T00:00:00Z",
+      "covers_to": "2026-06-30T00:00:00Z",
+      "period_control": true,
+      "rework_count": 0
+    },
+    {
+      "id": "PBC-02",
+      "control": "Access grant population",
+      "owner": "identity",
+      "evidence_type": "system_report",
+      "due_at": "2026-08-14T00:00:00Z",
+      "delivered_at": "2026-08-10T00:00:00Z",
+      "covers_from": "2026-01-01T00:00:00Z",
+      "covers_to": "2026-06-30T00:00:00Z",
+      "period_control": true,
+      "rework_count": 1
+    },
+    {
+      "id": "PBC-03",
+      "control": "UC-02 privileged MFA policy",
+      "owner": "identity",
+      "evidence_type": "screenshot",
+      "shows_source_and_timestamp": false,
+      "due_at": "2026-08-14T00:00:00Z",
+      "delivered_at": "2026-08-13T00:00:00Z",
+      "covers_from": "2026-06-29T00:00:00Z",
+      "covers_to": "2026-06-29T00:00:00Z",
+      "period_control": false,
+      "rework_count": 0
+    },
+    {
+      "id": "PBC-04",
+      "control": "Daily backup job history",
+      "owner": "platform",
+      "evidence_type": "api_export",
+      "due_at": "2026-08-21T00:00:00Z",
+      "delivered_at": "2026-08-20T00:00:00Z",
+      "covers_from": "2026-03-01T00:00:00Z",
+      "covers_to": "2026-06-30T00:00:00Z",
+      "period_control": true,
+      "rework_count": 0
+    },
+    {
+      "id": "PBC-05",
+      "control": "UC-08 quarterly access review",
+      "owner": "identity",
+      "evidence_type": "system_report",
+      "due_at": "2026-08-21T00:00:00Z",
+      "delivered_at": "2026-08-24T00:00:00Z",
+      "covers_from": "2026-01-01T00:00:00Z",
+      "covers_to": "2026-06-30T00:00:00Z",
+      "period_control": true,
+      "rework_count": 0
+    },
+    {
+      "id": "PBC-06",
+      "control": "Incident response tabletop",
+      "owner": "security operations",
+      "evidence_type": "attestation",
+      "due_at": "2026-08-21T00:00:00Z",
+      "delivered_at": "2026-08-18T00:00:00Z",
+      "covers_from": "2026-05-14T00:00:00Z",
+      "covers_to": "2026-05-14T00:00:00Z",
+      "period_control": false,
+      "rework_count": 0
+    },
+    {
+      "id": "PBC-07",
+      "control": "Weekly vulnerability scan history",
+      "owner": "security operations",
+      "evidence_type": "api_export",
+      "due_at": "2026-08-28T00:00:00Z",
+      "delivered_at": "2026-08-27T00:00:00Z",
+      "covers_from": "2026-01-01T00:00:00Z",
+      "covers_to": "2026-06-30T00:00:00Z",
+      "period_control": true,
+      "rework_count": 2
+    },
+    {
+      "id": "PBC-08",
+      "control": "UC-05 encryption configuration",
+      "owner": "platform",
+      "evidence_type": "api_export",
+      "due_at": "2026-08-28T00:00:00Z",
+      "delivered_at": "2026-08-25T00:00:00Z",
+      "covers_from": "2026-06-30T00:00:00Z",
+      "covers_to": "2026-06-30T00:00:00Z",
+      "period_control": false,
+      "rework_count": 0
+    },
+    {
+      "id": "PBC-09",
+      "control": "Security awareness training completion",
+      "owner": "people team",
+      "evidence_type": "system_report",
+      "due_at": "2026-08-28T00:00:00Z",
+      "delivered_at": "2026-08-26T00:00:00Z",
+      "period_control": true,
+      "rework_count": 0
+    },
+    {
+      "id": "PBC-10",
+      "control": "UC-06 restore exercise records",
+      "owner": "platform",
+      "evidence_type": "system_report",
+      "due_at": "2026-09-11T00:00:00Z",
+      "delivered_at": null,
+      "period_control": true,
+      "rework_count": 0
+    }
+  ]
+}

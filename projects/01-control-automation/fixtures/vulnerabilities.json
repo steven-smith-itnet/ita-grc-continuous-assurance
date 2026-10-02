@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://scanners/findings-export",
+  "collected_at": "2026-09-30T06:00:00Z",
+  "note": "Synthetic finding IDs. Normalized from Amazon Inspector, Defender for Cloud and Security Command Center exports.",
+  "findings": [
+    {"finding_id": "SYN-VULN-0001", "asset_id": "aws-vm-api-01", "severity": "high", "status": "open", "first_seen_at": "2026-09-20T08:00:00Z"},
+    {"finding_id": "SYN-VULN-0002", "asset_id": "aws-vm-worker-01", "severity": "critical", "status": "open", "first_seen_at": "2026-09-08T08:00:00Z"},
+    {"finding_id": "SYN-VULN-0003", "asset_id": "azure-vm-intake-01", "severity": "high", "status": "open", "first_seen_at": "2026-08-16T09:00:00Z"},
+    {"finding_id": "SYN-VULN-0004", "asset_id": "gcp-gke-pool-01", "severity": "critical", "status": "closed", "first_seen_at": "2026-09-01T10:00:00Z", "closed_at": "2026-09-10T10:00:00Z"},
+    {"finding_id": "SYN-VULN-0005", "asset_id": "azure-vm-web-01", "severity": "medium", "status": "open", "first_seen_at": "2026-07-01T09:00:00Z"}
+  ]
+}

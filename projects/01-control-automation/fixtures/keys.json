@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://cloud/key-metadata",
+  "collected_at": "2026-09-30T06:00:00Z",
+  "note": "rotation_period_days is normalized from AWS RotationPeriodInDays, the Azure Key Vault rotation policy lifetimeActions, and the GCP CryptoKey rotationPeriod in seconds.",
+  "keys": [
+    {"key_id": "k-aws-claims", "provider": "aws", "state": "enabled", "rotation_period_days": 365, "native": {"KeyManager": "CUSTOMER", "KeyState": "Enabled", "KeyRotationEnabled": true, "RotationPeriodInDays": 365}},
+    {"key_id": "k-aws-portal", "provider": "aws", "state": "enabled", "rotation_period_days": 365, "native": {"KeyManager": "CUSTOMER", "KeyState": "Enabled", "KeyRotationEnabled": true, "RotationPeriodInDays": 365}},
+    {"key_id": "k-az-intake", "provider": "azure", "state": "enabled", "rotation_period_days": null, "native": {"rotationPolicy": null}},
+    {"key_id": "k-gcp-ehr", "provider": "gcp", "state": "enabled", "rotation_period_days": 90, "native": {"primary": {"state": "ENABLED"}, "rotationPeriod": "7776000s"}},
+    {"key_id": "k-gcp-archive", "provider": "gcp", "state": "enabled", "rotation_period_days": 730, "native": {"primary": {"state": "ENABLED"}, "rotationPeriod": "63072000s"}}
+  ]
+}

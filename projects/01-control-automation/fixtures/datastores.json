@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://cloud/datastore-inventory",
+  "collected_at": "2026-09-30T06:00:00Z",
+  "note": "Fictional healthcare variant of Atlas Records. Tags come from the reviewed classification register, not from resource names.",
+  "datastores": [
+    {"datastore_id": "aws-claims-db", "provider": "aws", "kind": "rds-postgres", "criticality": "tier1", "data_tags": ["ephi"], "encryption": {"enabled": true, "key_source": "customer_managed", "key_id": "k-aws-claims"}},
+    {"datastore_id": "aws-claims-docs", "provider": "aws", "kind": "s3-bucket", "criticality": "tier1", "data_tags": ["ephi"], "encryption": {"enabled": true, "key_source": "provider_managed", "native": {"SSEAlgorithm": "AES256"}}},
+    {"datastore_id": "aws-member-portal-db", "provider": "aws", "kind": "rds-postgres", "criticality": "tier1", "data_tags": ["confidential"], "encryption": {"enabled": true, "key_source": "customer_managed", "key_id": "k-aws-portal"}},
+    {"datastore_id": "azure-intake-db", "provider": "azure", "kind": "azure-sql", "criticality": "tier1", "data_tags": ["ephi"], "encryption": {"enabled": true, "key_source": "customer_managed", "key_id": "k-az-intake"}},
+    {"datastore_id": "azure-reports", "provider": "azure", "kind": "storage-account", "criticality": "tier2", "data_tags": ["confidential"], "encryption": {"enabled": true, "key_source": "provider_managed"}},
+    {"datastore_id": "gcp-ehr-bucket", "provider": "gcp", "kind": "gcs-bucket", "criticality": "tier1", "data_tags": ["ephi"], "encryption": {"enabled": true, "key_source": "customer_managed", "key_id": "k-gcp-ehr"}},
+    {"datastore_id": "gcp-analytics", "provider": "gcp", "kind": "bigquery-dataset", "criticality": "tier2", "data_tags": ["internal"], "encryption": {"enabled": true, "key_source": "provider_managed"}},
+    {"datastore_id": "gcp-ephi-archive", "provider": "gcp", "kind": "gcs-bucket", "criticality": "tier2", "data_tags": ["ephi"], "encryption": {"enabled": true, "key_source": "customer_managed", "key_id": "k-gcp-archive"}}
+  ]
+}

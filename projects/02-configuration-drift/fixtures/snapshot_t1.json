@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "collected_at": "2026-09-30T10:00:00Z",
+  "collector": "assurance-collector (read-only role)",
+  "note": "Provider-native response shapes. AWS combines s3api and kms calls, Azure combines two az storage commands, GCP is the bucket JSON resource.",
+  "resources": {
+    "aws-records-01": {
+      "GetPublicAccessBlock": {
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "IgnorePublicAcls": true,
+          "BlockPublicPolicy": false,
+          "RestrictPublicBuckets": false
+        }
+      },
+      "GetBucketOwnershipControls": {
+        "OwnershipControls": {
+          "Rules": [
+            {
+              "ObjectOwnership": "BucketOwnerEnforced"
+            }
+          ]
+        }
+      },
+      "GetBucketVersioning": {
+        "Status": "Enabled"
+      },
+      "GetBucketEncryption": {
+        "ServerSideEncryptionConfiguration": {
+          "Rules": [
+            {
+              "ApplyServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "aws:kms",
+                "KMSMasterKeyID": "arn:aws:kms:us-east-2:111122223333:key/synthetic-records"
+              },
+              "BucketKeyEnabled": true
+            }
+          ]
+        }
+      },
+      "DescribeKey": {
+        "KeyMetadata": {
+          "KeyManager": "CUSTOMER",
+          "KeyState": "Enabled"
+        }
+      }
+    },
+    "aws-records-02": {
+      "GetPublicAccessBlock": {
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "IgnorePublicAcls": true,
+          "BlockPublicPolicy": true,
+          "RestrictPublicBuckets": true
+        }
+      },
+      "GetBucketOwnershipControls": {
+        "OwnershipControls": {
+          "Rules": [
+            {
+              "ObjectOwnership": "BucketOwnerEnforced"
+            }
+          ]
+        }
+      },
+      "GetBucketVersioning": {
+        "Status": "Suspended"
+      },
+      "GetBucketEncryption": {
+        "ServerSideEncryptionConfiguration": {
+          "Rules": [
+            {
+              "ApplyServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256"
+              },
+              "BucketKeyEnabled": false
+            }
+          ]
+        }
+      }
+    },
+    "azure-records-01": {
+      "storageAccount": {
+        "allowBlobPublicAccess": false,
+        "allowSharedKeyAccess": null,
+        "minimumTlsVersion": "TLS1_2",
+        "encryption": {
+          "keySource": "Microsoft.Keyvault"
+        }
+      },
+      "blobServiceProperties": {
+        "isVersioningEnabled": true
+      }
+    },
+    "azure-records-02": {
+      "storageAccount": {
+        "allowBlobPublicAccess": false,
+        "allowSharedKeyAccess": false,
+        "minimumTlsVersion": "TLS1_2",
+        "encryption": {
+          "keySource": "Microsoft.Storage"
+        }
+      },
+      "blobServiceProperties": {
+        "isVersioningEnabled": true
+      }
+    },
+    "gcp-records-01": {
+      "iamConfiguration": {
+        "publicAccessPrevention": "enforced",
+        "uniformBucketLevelAccess": {
+          "enabled": true
+        }
+      },
+      "versioning": {
+        "enabled": true
+      },
+      "encryption": {
+        "defaultKmsKeyName": "projects/synthetic-records/locations/us-central1/keyRings/records/cryptoKeys/records"
+      }
+    },
+    "gcp-records-02": {
+      "iamConfiguration": {
+        "publicAccessPrevention": "enforced",
+        "uniformBucketLevelAccess": {
+          "enabled": true
+        }
+      }
+    }
+  }
+}

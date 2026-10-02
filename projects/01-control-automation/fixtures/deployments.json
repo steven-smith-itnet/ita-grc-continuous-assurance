@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://cd/deployment-log",
+  "collected_at": "2026-09-30T06:00:00Z",
+  "deployments": [
+    {"deployment_id": "D-01", "provider": "aws", "service": "atlas-api", "environment": "prod", "commit_sha": "a1a1a1a", "deployer": "cd-pipeline", "deployed_at": "2026-09-02T15:00:00Z"},
+    {"deployment_id": "D-02", "provider": "azure", "service": "atlas-web", "environment": "prod", "commit_sha": "b2b2b2b", "deployer": "cd-pipeline", "deployed_at": "2026-09-08T16:00:00Z"},
+    {"deployment_id": "D-03", "provider": "gcp", "service": "atlas-extract", "environment": "prod", "commit_sha": "c3c3c3c", "deployer": "cd-pipeline", "deployed_at": "2026-09-11T14:30:00Z"},
+    {"deployment_id": "D-04", "provider": "aws", "service": "atlas-api", "environment": "prod", "commit_sha": "d4d4d4d", "deployer": "dev-f", "deployed_at": "2026-09-14T22:10:00Z"},
+    {"deployment_id": "D-05", "provider": "aws", "service": "atlas-api", "environment": "prod", "commit_sha": "e5e5e5e", "deployer": "dev-a", "deployed_at": "2026-09-18T03:20:00Z"},
+    {"deployment_id": "D-06", "provider": "azure", "service": "atlas-web", "environment": "prod", "commit_sha": null, "deployer": "cd-pipeline", "deployed_at": "2026-09-21T17:45:00Z"},
+    {"deployment_id": "D-07", "provider": "gcp", "service": "atlas-extract", "environment": "prod", "commit_sha": "f6f6f6f", "deployer": "cd-pipeline", "deployed_at": "2026-09-24T15:00:00Z"},
+    {"deployment_id": "D-08", "provider": "aws", "service": "atlas-worker", "environment": "prod", "commit_sha": "a7a7a7a", "deployer": "cd-pipeline", "deployed_at": "2026-09-27T16:30:00Z"},
+    {"deployment_id": "D-09", "provider": "aws", "service": "atlas-worker", "environment": "staging", "commit_sha": "b8b8b8b", "deployer": "cd-pipeline", "deployed_at": "2026-09-28T10:00:00Z"}
+  ]
+}

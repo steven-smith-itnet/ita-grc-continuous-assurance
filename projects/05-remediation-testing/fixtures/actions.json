@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://cloud/auto-remediation-log",
+  "note": "Normalized from AWS Config remediation executions, Azure Policy remediation tasks and a GCP Cloud Functions remediator.",
+  "approved_runbooks": [
+    "aws-config:s3-enable-public-access-block",
+    "aws-config:s3-enable-versioning",
+    "azure-policy:modify-disable-blob-public-access",
+    "gcp:enable-uniform-bucket-level-access"
+  ],
+  "max_repeats_per_day": 2,
+  "actions": [
+    {"action_id": "AR-01", "provider": "aws", "resource_id": "aws-records-03", "setting": "public_access_prevented", "runbook": "aws-config:s3-enable-public-access-block", "at": "2026-09-28T03:00:00Z", "resource_tags": {}, "post_check": "PASS"},
+    {"action_id": "AR-02", "provider": "azure", "resource_id": "azure-records-03", "setting": "public_access_prevented", "runbook": "azure-policy:modify-disable-blob-public-access", "at": "2026-09-28T05:00:00Z", "resource_tags": {}, "post_check": "PASS"},
+    {"action_id": "AR-03", "provider": "aws", "resource_id": "aws-records-02", "setting": "versioning_enabled", "runbook": "aws-config:s3-enable-versioning", "at": "2026-09-29T20:30:00Z", "resource_tags": {}, "post_check": "PASS"},
+    {"action_id": "AR-04", "provider": "aws", "resource_id": "aws-records-02", "setting": "versioning_enabled", "runbook": "aws-config:s3-enable-versioning", "at": "2026-09-29T22:30:00Z", "resource_tags": {}, "post_check": "PASS"},
+    {"action_id": "AR-05", "provider": "aws", "resource_id": "aws-records-02", "setting": "versioning_enabled", "runbook": "aws-config:s3-enable-versioning", "at": "2026-09-30T00:30:00Z", "resource_tags": {}, "post_check": "PASS"},
+    {"action_id": "AR-06", "provider": "gcp", "resource_id": "gcp-records-03", "setting": "identity_only_access", "runbook": "gcp:enable-uniform-bucket-level-access", "at": "2026-09-29T12:00:00Z", "resource_tags": {"remediation": "exempt", "reason": "legal hold export in progress"}, "post_check": "PASS"},
+    {"action_id": "AR-07", "provider": "azure", "resource_id": "azure-records-02", "setting": "public_access_prevented", "runbook": "azure-policy:modify-disable-blob-public-access", "at": "2026-09-30T02:00:00Z", "resource_tags": {}, "post_check": null}
+  ]
+}

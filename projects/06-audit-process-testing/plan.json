@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "period": {
+    "start": "2026-01-01T00:00:00Z",
+    "end": "2026-06-30T23:59:59Z",
+    "label": "Fictional SOC 2 Type 2 style period, January to June 2026, with fieldwork in the third quarter"
+  },
+  "sample_sizes": {
+    "annual": 1,
+    "quarterly": 2,
+    "monthly": 2,
+    "weekly": 5,
+    "daily": 25,
+    "event_driven": 25
+  },
+  "sample_size_note": "Illustrative planning values only. The assessor's methodology sets actual sample sizes.",
+  "authorized_approvers": {
+    "aws": [
+      "mgr-cloud",
+      "mgr-identity"
+    ],
+    "azure": [
+      "mgr-cloud",
+      "mgr-identity"
+    ],
+    "gcp": [
+      "mgr-data",
+      "mgr-cloud"
+    ]
+  },
+  "populations": [
+    {
+      "population_id": "POP-ACCESS-GRANTS",
+      "seed": "ACME-2026-H1-ACCESS-GRANTS",
+      "frequency": "event_driven",
+      "attributes": [
+        "approved_before_provisioned",
+        "approver_not_grantee",
+        "approver_authorized",
+        "ticket_present"
+      ]
+    },
+    {
+      "population_id": "POP-PROD-CHANGES",
+      "seed": "ACME-2026-H1-PROD-CHANGES",
+      "frequency": "event_driven",
+      "attributes": [
+        "ticket_present"
+      ]
+    }
+  ]
+}

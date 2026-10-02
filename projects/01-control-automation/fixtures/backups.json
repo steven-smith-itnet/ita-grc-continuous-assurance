@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://cloud/backup-exports",
+  "collected_at": "2026-09-30T06:00:00Z",
+  "protected_resources": [
+    {"datastore_id": "aws-claims-db", "provider": "aws", "plan": "tier1-daily", "last_recovery_point_at": "2026-09-30T09:00:00Z"},
+    {"datastore_id": "aws-claims-docs", "provider": "aws", "plan": "tier1-daily", "last_recovery_point_at": "2026-09-29T06:00:00Z"},
+    {"datastore_id": "azure-intake-db", "provider": "azure", "plan": "tier1-daily", "last_recovery_point_at": "2026-09-30T04:00:00Z"},
+    {"datastore_id": "azure-reports", "provider": "azure", "plan": "tier2-weekly", "last_recovery_point_at": "2026-09-27T04:00:00Z"},
+    {"datastore_id": "gcp-ehr-bucket", "provider": "gcp", "plan": "tier1-daily", "last_recovery_point_at": null}
+  ]
+}

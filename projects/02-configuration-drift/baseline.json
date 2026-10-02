@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "baseline_id": "STG-BASELINE",
+  "version": "1.2",
+  "resource_type": "object storage",
+  "owner": "Acme platform engineering, reviewed by TechGRC",
+  "settings": [
+    {
+      "id": "public_access_prevented",
+      "expected": true,
+      "severity": "high",
+      "applies": {},
+      "native": {
+        "aws": "all four PublicAccessBlockConfiguration flags true",
+        "azure": "allowBlobPublicAccess false",
+        "gcp": "iamConfiguration.publicAccessPrevention enforced"
+      },
+      "enforcement": {
+        "aws": "AWS Config managed rule s3-bucket-level-public-access-prohibited; account-level S3 Block Public Access",
+        "azure": "Azure Policy built-in: Storage account public access should be disallowed",
+        "gcp": "Organization policy constraint storage.publicAccessPrevention"
+      }
+    },
+    {
+      "id": "identity_only_access",
+      "expected": true,
+      "severity": "medium",
+      "applies": {},
+      "native": {
+        "aws": "ObjectOwnership BucketOwnerEnforced, which disables ACLs",
+        "azure": "allowSharedKeyAccess false, so requests must use Microsoft Entra ID",
+        "gcp": "iamConfiguration.uniformBucketLevelAccess.enabled true"
+      },
+      "enforcement": {
+        "aws": "AWS Config managed rule s3-bucket-acl-prohibited",
+        "azure": "Azure Policy built-in: Storage accounts should prevent shared key access",
+        "gcp": "Organization policy constraint storage.uniformBucketLevelAccess"
+      }
+    },
+    {
+      "id": "versioning_enabled",
+      "expected": true,
+      "severity": "medium",
+      "applies": {},
+      "native": {
+        "aws": "GetBucketVersioning Status Enabled",
+        "azure": "blob service isVersioningEnabled true",
+        "gcp": "versioning.enabled true"
+      },
+      "enforcement": {
+        "aws": "AWS Config managed rule s3-bucket-versioning-enabled",
+        "azure": "Custom Azure Policy or deployment template default",
+        "gcp": "Terraform module default with plan-time policy check"
+      }
+    },
+    {
+      "id": "customer_managed_key",
+      "expected": true,
+      "severity": "high",
+      "applies": {"classification": ["restricted"]},
+      "native": {
+        "aws": "SSEAlgorithm aws:kms with a KMS key whose KeyManager is CUSTOMER",
+        "azure": "encryption.keySource Microsoft.Keyvault",
+        "gcp": "encryption.defaultKmsKeyName set"
+      },
+      "enforcement": {
+        "aws": "AWS Config managed rule s3-default-encryption-kms",
+        "azure": "Azure Policy built-in requiring customer-managed keys for storage accounts",
+        "gcp": "Organization policy constraint gcp.restrictNonCmekServices"
+      }
+    }
+  ]
+}

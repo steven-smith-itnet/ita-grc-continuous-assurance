@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "synthetic://grc-evidence/hr/workers-export",
+  "collected_at": "2026-09-30T06:00:00Z",
+  "note": "Copy of the HR export as landed in the GRC evidence store. DF-04 compares it to the HR source.",
+  "workers": [
+    {"worker_id": "W-1001", "status": "active", "region": "us"},
+    {"worker_id": "W-1002", "status": "terminated", "termination_effective_at": "2026-09-10T17:00:00Z", "region": "us"},
+    {"worker_id": "W-1003", "status": "terminated", "termination_effective_at": "2026-09-15T17:00:00Z", "region": "us"},
+    {"worker_id": "W-1004", "status": "terminated", "termination_effective_at": "2026-09-20T09:00:00Z", "region": "in"},
+    {"worker_id": "W-1005", "status": "terminated", "termination_effective_at": "2026-09-22T23:00:00Z", "region": "de"},
+    {"worker_id": "W-1006", "status": "terminated", "termination_effective_at": "2026-09-25T16:00:00Z", "region": "us"},
+    {"worker_id": "W-1007", "status": "terminated", "termination_effective_at": "2026-09-26T12:00:00Z", "region": "us"},
+    {"worker_id": "W-1008", "status": "terminated", "termination_effective_at": "2026-10-03T00:00:00Z", "region": "us"},
+    {"worker_id": "W-1009", "status": "active", "region": "us"},
+    {"worker_id": "W-1010", "status": "active", "region": "in"},
+    {"worker_id": "W-1011", "status": "active", "region": "us"},
+    {"worker_id": "W-1012", "status": "active", "region": "de"},
+    {"worker_id": "W-1013", "status": "active", "region": "us"},
+    {"worker_id": "W-1014", "status": "active", "region": "us"},
+    {"worker_id": "W-1015", "status": "active", "region": "in"}
+  ]
+}

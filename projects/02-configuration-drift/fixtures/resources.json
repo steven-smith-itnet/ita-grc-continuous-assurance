@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "description": "Six of the base lab's storage workloads, with classification from the reviewed register.",
+  "resources": [
+    {"id": "aws-records-01", "provider": "aws", "classification": "restricted", "module": "storage-bucket v1.3"},
+    {"id": "aws-records-02", "provider": "aws", "classification": "confidential", "module": "storage-bucket v1.3"},
+    {"id": "azure-records-01", "provider": "azure", "classification": "restricted", "module": "storage-account v2.0"},
+    {"id": "azure-records-02", "provider": "azure", "classification": "confidential", "module": "storage-account v2.1"},
+    {"id": "gcp-records-01", "provider": "gcp", "classification": "restricted", "module": "gcs-bucket v0.9"},
+    {"id": "gcp-records-02", "provider": "gcp", "classification": "confidential", "module": "gcs-bucket v0.9"}
+  ]
+}

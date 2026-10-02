@@ -2,6 +2,10 @@
 
 **Objective:** support the frameworks named in the role while preserving their different purposes, scopes and assessment methods. This chapter is an implementation planning guide. It does not reproduce licensed standards or provide a complete requirement-by-requirement certification workbook.
 
+## Priority for this role
+
+The supplementary role notes set the order: SOC 2 first, ISO standards next, HIPAA highly preferred, and PCI DSS owned by a separate team. [Project 07](../projects/07-framework-coverage/README.md) computes automated evidence coverage in that order and turns the gaps into a backlog. The PCI DSS section below stays for completeness.
+
 ## SOC 2
 
 SOC 2 addresses controls relevant to the selected Trust Services Criteria categories. Security is central, and availability, processing integrity, confidentiality and privacy depend on the engagement scope. A Type I report addresses a point in time, while a Type II engagement includes operation over a specified period. Confirm engagement details with the CPA firm. [AICPA SOC resources](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services), [Trust Services Criteria](https://www.aicpa-cima.com/resources/download/2017-trust-services-criteria-with-revised-points-of-focus-2022).

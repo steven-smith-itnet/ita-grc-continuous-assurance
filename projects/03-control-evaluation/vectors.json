@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "description": "Seeded-fault vectors for the Project 01 use cases. Each vector applies operations to a known-good record set and states the result a correct control must return.",
+  "suites": [
+    {
+      "usecase_id": "UC-01",
+      "entity_id": "W-2001",
+      "implementations": ["leaver_access", "naive_leaver_access"],
+      "baseline_expect": "PASS",
+      "baseline": {
+        "hr_workers": {"workers": [{"worker_id": "W-2001", "status": "terminated", "termination_effective_at": "2026-09-20T12:00:00Z"}]},
+        "idp_accounts": {"accounts": [{"account_id": "u-2001", "worker_id": "W-2001", "enabled": false, "disabled_at": "2026-09-20T18:00:00Z", "groups": []}]},
+        "cloud_credentials": {"credentials": [{"provider": "aws", "type": "iam_access_key", "credential_id": "AKIA-SYNTH-2001", "owner_worker_id": "W-2001", "status": "inactive"}]}
+      },
+      "mutations": [
+        {"id": "late-disable", "description": "Account disabled 48 hours after termination", "ops": [{"op": "set", "path": "idp_accounts/accounts/0/disabled_at", "value": "2026-09-22T12:00:00Z"}], "expect": "FAIL"},
+        {"id": "still-enabled", "description": "Account still enabled", "ops": [{"op": "set", "path": "idp_accounts/accounts/0/enabled", "value": true}], "expect": "FAIL"},
+        {"id": "active-cloud-key", "description": "IdP disabled on time, AWS access key still active", "ops": [{"op": "set", "path": "cloud_credentials/credentials/0/status", "value": "active"}], "expect": "FAIL"},
+        {"id": "sla-boundary", "description": "Disabled exactly 24 hours after termination", "ops": [{"op": "set", "path": "idp_accounts/accounts/0/disabled_at", "value": "2026-09-21T12:00:00Z"}], "expect": "PASS"},
+        {"id": "no-correlation", "description": "Nothing correlates to the terminated worker", "ops": [{"op": "delete", "path": "idp_accounts/accounts/0"}, {"op": "delete", "path": "cloud_credentials/credentials/0"}], "expect": "UNKNOWN"},
+        {"id": "disable-time-missing", "description": "Disabled account without a disable time", "ops": [{"op": "delete", "path": "idp_accounts/accounts/0/disabled_at"}], "expect": "UNKNOWN"},
+        {"id": "naive-timestamp", "description": "Termination time without a UTC offset", "ops": [{"op": "set", "path": "hr_workers/workers/0/termination_effective_at", "value": "2026-09-20T12:00:00"}], "expect": "UNKNOWN"}
+      ]
+    },
+    {
+      "usecase_id": "UC-02",
+      "entity_id": "u-2002",
+      "implementations": ["privileged_mfa", "naive_privileged_mfa"],
+      "baseline_expect": "PASS",
+      "baseline": {
+        "idp_accounts": {"accounts": [{"account_id": "u-2002", "worker_id": "W-2002", "enabled": true, "groups": ["aws-admins"], "mfa": {"policy_enforced": true, "methods": ["fido2"]}}]},
+        "mfa_exclusions": {"exclusions": []}
+      },
+      "mutations": [
+        {"id": "policy-not-applied", "description": "Method registered but no enforcing policy applies", "ops": [{"op": "set", "path": "idp_accounts/accounts/0/mfa/policy_enforced", "value": false}], "expect": "FAIL"},
+        {"id": "weak-method-only", "description": "Only SMS registered", "ops": [{"op": "set", "path": "idp_accounts/accounts/0/mfa/methods", "value": ["sms"]}], "expect": "FAIL"},
+        {"id": "no-method", "description": "No method registered", "ops": [{"op": "set", "path": "idp_accounts/accounts/0/mfa/methods", "value": []}], "expect": "FAIL"},
+        {"id": "mfa-not-collected", "description": "MFA data missing from the export", "ops": [{"op": "delete", "path": "idp_accounts/accounts/0/mfa"}], "expect": "UNKNOWN"},
+        {"id": "string-boolean", "description": "Policy flag delivered as the string true", "ops": [{"op": "set", "path": "idp_accounts/accounts/0/mfa/policy_enforced", "value": "true"}], "expect": "UNKNOWN"},
+        {"id": "break-glass-no-exclusion", "description": "Break-glass account without an approved exclusion", "ops": [{"op": "set", "path": "idp_accounts/accounts/0/break_glass", "value": true}], "expect": "FAIL"},
+        {"id": "break-glass-expired", "description": "Break-glass exclusion expired", "ops": [{"op": "set", "path": "idp_accounts/accounts/0/break_glass", "value": true}, {"op": "append", "path": "mfa_exclusions/exclusions", "value": {"id": "EX-T1", "account_id": "u-2002", "status": "approved", "owner": "identity-platform", "approver": "ciso-delegate", "approved_at": "2026-01-01T00:00:00Z", "expires_at": "2026-09-01T00:00:00Z", "compensating_control": "Sealed hardware key"}}], "expect": "FAIL"},
+        {"id": "break-glass-valid", "description": "Break-glass account with a valid exclusion", "ops": [{"op": "set", "path": "idp_accounts/accounts/0/break_glass", "value": true}, {"op": "append", "path": "mfa_exclusions/exclusions", "value": {"id": "EX-T2", "account_id": "u-2002", "status": "approved", "owner": "identity-platform", "approver": "ciso-delegate", "approved_at": "2026-07-01T00:00:00Z", "expires_at": "2027-01-01T00:00:00Z", "compensating_control": "Sealed hardware key"}}], "expect": "NOT_APPLICABLE"}
+      ]
+    },
+    {
+      "usecase_id": "UC-03",
+      "entity_id": "D-9001",
+      "implementations": ["change_approval", "naive_change_approval"],
+      "baseline_expect": "PASS",
+      "baseline": {
+        "deployments": {"deployments": [{"deployment_id": "D-9001", "provider": "aws", "environment": "prod", "commit_sha": "abc1234", "deployer": "cd-pipeline", "deployed_at": "2026-09-20T12:00:00Z"}]},
+        "pull_requests": {"pull_requests": [{"number": 901, "author": "dev-x", "merged": true, "merge_commit_sha": "abc1234", "head_sha": "abc1234", "reviews": [{"reviewer": "dev-y", "state": "APPROVED", "commit_id": "abc1234"}]}]},
+        "emergency_changes": {"changes": []}
+      },
+      "mutations": [
+        {"id": "self-approval", "description": "Author approved their own pull request", "ops": [{"op": "set", "path": "pull_requests/pull_requests/0/reviews/0/reviewer", "value": "dev-x"}], "expect": "FAIL"},
+        {"id": "stale-approval", "description": "Approval given before the final commit", "ops": [{"op": "set", "path": "pull_requests/pull_requests/0/reviews/0/commit_id", "value": "abc1111"}], "expect": "FAIL"},
+        {"id": "changes-requested", "description": "Only review requested changes", "ops": [{"op": "set", "path": "pull_requests/pull_requests/0/reviews/0/state", "value": "CHANGES_REQUESTED"}], "expect": "FAIL"},
+        {"id": "unmerged-pr", "description": "Deployed commit matches a pull request that was never merged", "ops": [{"op": "set", "path": "pull_requests/pull_requests/0/merged", "value": false}], "expect": "FAIL"},
+        {"id": "no-pr", "description": "Deployed commit has no pull request", "ops": [{"op": "set", "path": "deployments/deployments/0/commit_sha", "value": "fff9999"}], "expect": "FAIL"},
+        {"id": "sha-missing", "description": "Deployment record lacks the commit SHA", "ops": [{"op": "set", "path": "deployments/deployments/0/commit_sha", "value": null}], "expect": "UNKNOWN"},
+        {"id": "emergency-valid", "description": "Emergency change approved by someone else within 72 hours", "ops": [{"op": "set", "path": "deployments/deployments/0/commit_sha", "value": "fff9999"}, {"op": "append", "path": "emergency_changes/changes", "value": {"change_id": "EC-T1", "deployment_id": "D-9001", "approver": "ops-manager", "approved_at": "2026-09-20T20:00:00Z"}}], "expect": "PASS"},
+        {"id": "emergency-self", "description": "Emergency change approved by the deployer", "ops": [{"op": "set", "path": "deployments/deployments/0/commit_sha", "value": "fff9999"}, {"op": "set", "path": "deployments/deployments/0/deployer", "value": "dev-z"}, {"op": "append", "path": "emergency_changes/changes", "value": {"change_id": "EC-T2", "deployment_id": "D-9001", "approver": "dev-z", "approved_at": "2026-09-20T20:00:00Z"}}], "expect": "FAIL"},
+        {"id": "emergency-late", "description": "Emergency approval 100 hours after deployment", "ops": [{"op": "set", "path": "deployments/deployments/0/commit_sha", "value": "fff9999"}, {"op": "append", "path": "emergency_changes/changes", "value": {"change_id": "EC-T3", "deployment_id": "D-9001", "approver": "ops-manager", "approved_at": "2026-09-24T16:00:00Z"}}], "expect": "FAIL"}
+      ]
+    },
+    {
+      "usecase_id": "UC-04",
+      "entity_id": "aws-acct-x",
+      "implementations": ["audit_logging"],
+      "baseline_expect": "PASS",
+      "baseline": {
+        "log_scopes": {"scopes": [{"scope_id": "aws-acct-x", "provider": "aws", "config": {"trails": [{"IsMultiRegionTrail": true, "IsLogging": true}]}, "canary": {"event_id": "c-1", "emitted_at": "2026-09-30T10:00:00Z", "received_at": "2026-09-30T10:05:00Z"}}]}
+      },
+      "mutations": [
+        {"id": "trail-stopped", "description": "Trail exists but logging is stopped", "ops": [{"op": "set", "path": "log_scopes/scopes/0/config/trails/0/IsLogging", "value": false}], "expect": "FAIL"},
+        {"id": "single-region", "description": "Trail covers one region only", "ops": [{"op": "set", "path": "log_scopes/scopes/0/config/trails/0/IsMultiRegionTrail", "value": false}], "expect": "FAIL"},
+        {"id": "canary-lost", "description": "Canary never arrives", "ops": [{"op": "set", "path": "log_scopes/scopes/0/canary/received_at", "value": null}], "expect": "FAIL"},
+        {"id": "canary-late", "description": "Canary arrives after 20 minutes", "ops": [{"op": "set", "path": "log_scopes/scopes/0/canary/received_at", "value": "2026-09-30T10:20:00Z"}], "expect": "FAIL"},
+        {"id": "canary-boundary", "description": "Canary arrives at exactly 15 minutes", "ops": [{"op": "set", "path": "log_scopes/scopes/0/canary/received_at", "value": "2026-09-30T10:15:00Z"}], "expect": "PASS"},
+        {"id": "config-missing", "description": "Trail configuration not collected", "ops": [{"op": "delete", "path": "log_scopes/scopes/0/config/trails"}], "expect": "UNKNOWN"},
+        {"id": "no-canary", "description": "No canary emitted", "ops": [{"op": "delete", "path": "log_scopes/scopes/0/canary"}], "expect": "UNKNOWN"},
+        {"id": "clock-skew", "description": "Canary received before it was emitted", "ops": [{"op": "set", "path": "log_scopes/scopes/0/canary/received_at", "value": "2026-09-30T09:59:00Z"}], "expect": "UNKNOWN"}
+      ]
+    },
+    {
+      "usecase_id": "UC-05",
+      "entity_id": "ds-x",
+      "implementations": ["ephi_encryption"],
+      "baseline_expect": "PASS",
+      "baseline": {
+        "datastores": {"datastores": [{"datastore_id": "ds-x", "provider": "gcp", "criticality": "tier1", "data_tags": ["ephi"], "encryption": {"enabled": true, "key_source": "customer_managed", "key_id": "k-x"}}]},
+        "keys": {"keys": [{"key_id": "k-x", "state": "enabled", "rotation_period_days": 90}]}
+      },
+      "mutations": [
+        {"id": "provider-key", "description": "Provider-managed key", "ops": [{"op": "set", "path": "datastores/datastores/0/encryption/key_source", "value": "provider_managed"}], "expect": "FAIL"},
+        {"id": "encryption-off", "description": "Encryption disabled", "ops": [{"op": "set", "path": "datastores/datastores/0/encryption/enabled", "value": false}], "expect": "FAIL"},
+        {"id": "key-disabled", "description": "Key disabled", "ops": [{"op": "set", "path": "keys/keys/0/state", "value": "disabled"}], "expect": "FAIL"},
+        {"id": "rotation-long", "description": "Rotation every 400 days", "ops": [{"op": "set", "path": "keys/keys/0/rotation_period_days", "value": 400}], "expect": "FAIL"},
+        {"id": "rotation-boundary", "description": "Rotation every 365 days", "ops": [{"op": "set", "path": "keys/keys/0/rotation_period_days", "value": 365}], "expect": "PASS"},
+        {"id": "rotation-missing", "description": "Rotation not collected", "ops": [{"op": "set", "path": "keys/keys/0/rotation_period_days", "value": null}], "expect": "UNKNOWN"},
+        {"id": "rotation-string", "description": "Rotation delivered as a string", "ops": [{"op": "set", "path": "keys/keys/0/rotation_period_days", "value": "90"}], "expect": "UNKNOWN"},
+        {"id": "key-metadata-missing", "description": "Key metadata not collected", "ops": [{"op": "set", "path": "keys/keys", "value": []}], "expect": "UNKNOWN"},
+        {"id": "tags-missing", "description": "Classification tags missing", "ops": [{"op": "delete", "path": "datastores/datastores/0/data_tags"}], "expect": "UNKNOWN"},
+        {"id": "not-ephi", "description": "Datastore not tagged ePHI", "ops": [{"op": "set", "path": "datastores/datastores/0/data_tags", "value": ["internal"]}], "expect": "NOT_APPLICABLE"}
+      ]
+    },
+    {
+      "usecase_id": "UC-06",
+      "entity_id": "ds-y",
+      "implementations": ["backup_restore"],
+      "baseline_expect": "PASS",
+      "baseline": {
+        "datastores": {"datastores": [{"datastore_id": "ds-y", "provider": "azure", "criticality": "tier1", "data_tags": ["ephi"]}]},
+        "backups": {"protected_resources": [{"datastore_id": "ds-y", "last_recovery_point_at": "2026-09-30T06:00:00Z"}]},
+        "restore_tests": {"exercises": [{"exercise_id": "RX-T1", "datastore_id": "ds-y", "performed_at": "2026-08-30T12:00:00Z", "elapsed_hours": 2, "integrity_verified": true}]}
+      },
+      "mutations": [
+        {"id": "no-backup-plan", "description": "Datastore not in any backup plan", "ops": [{"op": "set", "path": "backups/protected_resources", "value": []}], "expect": "FAIL"},
+        {"id": "stale-recovery-point", "description": "Recovery point 48 hours old", "ops": [{"op": "set", "path": "backups/protected_resources/0/last_recovery_point_at", "value": "2026-09-28T12:00:00Z"}], "expect": "FAIL"},
+        {"id": "recovery-point-missing", "description": "Recovery point time missing", "ops": [{"op": "set", "path": "backups/protected_resources/0/last_recovery_point_at", "value": null}], "expect": "UNKNOWN"},
+        {"id": "no-restore", "description": "No restore exercise recorded", "ops": [{"op": "set", "path": "restore_tests/exercises", "value": []}], "expect": "FAIL"},
+        {"id": "restore-old", "description": "Restore exercise 121 days old", "ops": [{"op": "set", "path": "restore_tests/exercises/0/performed_at", "value": "2026-06-01T12:00:00Z"}], "expect": "FAIL"},
+        {"id": "no-integrity-check", "description": "Restore without integrity verification", "ops": [{"op": "set", "path": "restore_tests/exercises/0/integrity_verified", "value": false}], "expect": "FAIL"},
+        {"id": "restore-slow", "description": "Restore took 6 hours against a 4-hour RTO", "ops": [{"op": "set", "path": "restore_tests/exercises/0/elapsed_hours", "value": 6}], "expect": "FAIL"},
+        {"id": "elapsed-missing", "description": "Restore duration not recorded", "ops": [{"op": "delete", "path": "restore_tests/exercises/0/elapsed_hours"}], "expect": "UNKNOWN"},
+        {"id": "tier2", "description": "Datastore is tier 2", "ops": [{"op": "set", "path": "datastores/datastores/0/criticality", "value": "tier2"}], "expect": "NOT_APPLICABLE"}
+      ]
+    },
+    {
+      "usecase_id": "UC-07",
+      "entity_id": "vm-z",
+      "implementations": ["vulnerability_sla", "naive_vulnerability_sla"],
+      "baseline_expect": "PASS",
+      "baseline": {
+        "compute_assets": {"assets": [{"asset_id": "vm-z", "provider": "gcp", "last_scanned_at": "2026-09-29T00:00:00Z"}]},
+        "vulnerabilities": {"findings": [{"finding_id": "SYN-T1", "asset_id": "vm-z", "severity": "critical", "status": "open", "first_seen_at": "2026-09-25T00:00:00Z"}]}
+      },
+      "mutations": [
+        {"id": "overdue-critical", "description": "Critical finding open 29 days", "ops": [{"op": "set", "path": "vulnerabilities/findings/0/first_seen_at", "value": "2026-09-01T00:00:00Z"}], "expect": "FAIL"},
+        {"id": "overdue-high", "description": "High finding open 46 days", "ops": [{"op": "set", "path": "vulnerabilities/findings/0/severity", "value": "high"}, {"op": "set", "path": "vulnerabilities/findings/0/first_seen_at", "value": "2026-08-15T00:00:00Z"}], "expect": "FAIL"},
+        {"id": "closed-old", "description": "Old critical finding already closed", "ops": [{"op": "set", "path": "vulnerabilities/findings/0/status", "value": "closed"}, {"op": "set", "path": "vulnerabilities/findings/0/first_seen_at", "value": "2026-08-01T00:00:00Z"}], "expect": "PASS"},
+        {"id": "stale-scan", "description": "Last scan 20 days ago", "ops": [{"op": "set", "path": "compute_assets/assets/0/last_scanned_at", "value": "2026-09-10T00:00:00Z"}], "expect": "UNKNOWN"},
+        {"id": "never-scanned", "description": "No scan recorded", "ops": [{"op": "delete", "path": "compute_assets/assets/0/last_scanned_at"}], "expect": "UNKNOWN"},
+        {"id": "first-seen-missing", "description": "Finding lacks a first-seen time", "ops": [{"op": "delete", "path": "vulnerabilities/findings/0/first_seen_at"}], "expect": "UNKNOWN"},
+        {"id": "stale-scan-and-overdue", "description": "Stale scan, but a known critical is overdue", "ops": [{"op": "set", "path": "compute_assets/assets/0/last_scanned_at", "value": "2026-09-10T00:00:00Z"}, {"op": "set", "path": "vulnerabilities/findings/0/first_seen_at", "value": "2026-09-01T00:00:00Z"}], "expect": "FAIL"}
+      ]
+    },
+    {
+      "usecase_id": "UC-08",
+      "entity_id": "AR-X",
+      "implementations": ["access_review"],
+      "baseline_expect": "PASS",
+      "baseline": {
+        "idp_accounts": {"accounts": [{"account_id": "u-a", "groups": ["grp"]}, {"account_id": "u-b", "groups": ["grp"]}]},
+        "review_snapshots": {"snapshots": [{"campaign_id": "AR-X", "group": "grp", "members": ["u-a", "u-b"]}]},
+        "access_reviews": {"campaigns": [{"campaign_id": "AR-X", "provider": "aws", "group": "grp", "due_at": "2026-09-15T00:00:00Z", "completed_at": "2026-09-10T00:00:00Z", "items": [{"account_id": "u-a", "reviewer": "mgr", "decision": "keep"}, {"account_id": "u-b", "reviewer": "mgr", "decision": "keep"}]}]}
+      },
+      "mutations": [
+        {"id": "member-omitted", "description": "One group member left out of the review", "ops": [{"op": "delete", "path": "access_reviews/campaigns/0/items/1"}], "expect": "FAIL"},
+        {"id": "self-review", "description": "Account holder reviewed their own access", "ops": [{"op": "set", "path": "access_reviews/campaigns/0/items/0/reviewer", "value": "u-a"}], "expect": "FAIL"},
+        {"id": "undecided", "description": "Item has no decision", "ops": [{"op": "set", "path": "access_reviews/campaigns/0/items/1/decision", "value": null}], "expect": "FAIL"},
+        {"id": "revoke-not-executed", "description": "Revocation decided but membership remains", "ops": [{"op": "set", "path": "access_reviews/campaigns/0/items/1/decision", "value": "revoke"}], "expect": "FAIL"},
+        {"id": "revoke-executed", "description": "Revocation decided and membership removed", "ops": [{"op": "set", "path": "access_reviews/campaigns/0/items/1/decision", "value": "revoke"}, {"op": "set", "path": "idp_accounts/accounts/1/groups", "value": []}], "expect": "PASS"},
+        {"id": "late", "description": "Campaign completed after its due date", "ops": [{"op": "set", "path": "access_reviews/campaigns/0/completed_at", "value": "2026-09-20T00:00:00Z"}], "expect": "FAIL"},
+        {"id": "not-completed", "description": "Campaign never completed and past due", "ops": [{"op": "delete", "path": "access_reviews/campaigns/0/completed_at"}], "expect": "FAIL"},
+        {"id": "no-snapshot", "description": "No membership snapshot retained", "ops": [{"op": "set", "path": "review_snapshots/snapshots", "value": []}], "expect": "UNKNOWN"}
+      ]
+    }
+  ]
+}

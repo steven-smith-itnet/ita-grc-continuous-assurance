@@ -28,6 +28,25 @@ Expected fixed-fixture results: **87 PASS, 9 FAIL, 12 UNKNOWN, 18 NOT_APPLICABLE
 
 The engine and tests require Python 3.11+ and no third-party packages. Provider adapters cover one narrow storage-prevention baseline. Source observations are synthetic. See the handbook for live-collector requirements and process-evidence limitations.
 
+## Deeper projects
+
+Seven runnable sub-projects go deeper on the priorities in the [supplementary role notes](ROLE-SOURCE.md#supplementary-priorities). Start with [the projects overview](projects/README.md).
+
+| Project | Focus |
+|---|---|
+| [01 Control automation use-case library](projects/01-control-automation/README.md) | Eight use cases that derive results from HR, identity, CI/CD, backup, scanner and cloud API records |
+| [02 Configuration baseline and drift](projects/02-configuration-drift/README.md) | One storage baseline across AWS, Azure and GCP, with authorized and unauthorized drift |
+| [03 Control evaluation with seeded faults](projects/03-control-evaluation/README.md) | 109 seeded-fault vectors that separate sound control logic from weak logic |
+| [04 Evidence data-flow testing](projects/04-evidence-data-flow/README.md) | Hop-by-hop reconciliation of four evidence pipelines and the effect on control results |
+| [05 Remediation verification](projects/05-remediation-testing/README.md) | Closure criteria for findings, and tests of automatic remediation |
+| [06 Audit process testing](projects/06-audit-process-testing/README.md) | Population reconciliation, reproducible sampling, period coverage and evidence quality |
+| [07 SOC 2-first framework coverage](projects/07-framework-coverage/README.md) | Coverage computed from declared mappings, plus the next use cases to build |
+
+```bash
+PYTHONPATH=src python3 -m assurance projects --as-of 2026-09-30T12:00:00Z
+PYTHONPATH=src python3 -m assurance verify artifacts/projects/04-evidence-data-flow
+```
+
 ## Presentation site
 
 - [Live handbook and interactive demo](https://steven-smith-itnet.github.io/techgrc-continuous-assurance/)
@@ -42,7 +61,7 @@ python3 -m venv .venv
 python3 -m http.server 8765 --directory site
 ```
 
-Open http://localhost:8765. The site contains a searchable handbook, interactive result filters, provider/maturity comparison, architecture and phase diagrams, a 20-slide presentation with speaker notes, templates and downloadable source/evidence packages. A [20-slide PDF](slides/presentation.pdf) is included, and the presentation can also be printed from the browser. Speaker notes remain available in the HTML presentation and slide JSON.
+Open http://localhost:8765. The site contains a searchable handbook, interactive result filters, provider/maturity comparison, architecture and phase diagrams, a projects page with the seven deeper projects and their result bundles, a 24-slide presentation with speaker notes, templates and downloadable source/evidence packages. A [24-slide PDF](slides/presentation.pdf) is included, and the presentation can also be printed from the browser. Speaker notes remain available in the HTML presentation and slide JSON.
 
 ## Standalone GitHub Pages
 
@@ -57,8 +76,9 @@ The public source ZIP uses an explicit directory/suffix allowlist. Private evide
 | `docs/` | Implementation handbook and provider runbooks |
 | `src/assurance/` | Deterministic evaluation, adapters and bundle verification |
 | `controls/` | Versioned executable control catalog |
+| `projects/` | Seven deeper sub-projects with their own specifications, fixtures and write-ups |
 | `fixtures/` | Declared scope, synthetic observations and exceptions |
-| `tests/` | Predicate, provenance, population, exception and adapter regressions |
+| `tests/` | Base-lab regressions and project regressions |
 | `infra/` | AWS CloudFormation/Config, Azure Bicep/Policy, GCP Terraform pilot templates |
 | `queries/` | Read-only CLI and analytical examples |
 | `templates/` | Registers, workpapers, readiness, findings and recovery records |
@@ -68,7 +88,7 @@ The public source ZIP uses an explicit directory/suffix allowlist. Private evide
 
 ## Implementation status
 
-Locally executed: synthetic evaluator, automated tests, evidence verification, site build and checks.
+Locally executed: synthetic evaluator, the seven deeper projects, automated tests, evidence verification, site build and checks.
 
 Authored but not live deployed: cloud templates, cloud CLI examples and enterprise workflows. Native validation and sandbox integration are required before use. The project has not collected real organizational, customer, employee, payment or health data.
 
