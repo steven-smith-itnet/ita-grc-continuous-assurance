@@ -2,7 +2,7 @@
 
 A multi-cloud portfolio case study connecting data inventory, classification, automated control testing, evidence engineering, remediation and audit readiness.
 
-Inspired by a user-supplied Compliance Product Consultant role description, with the employer anonymized as **Acme**. This independent project models Acme's Technology GRC group and its fictional **Atlas Records** service. It does not describe a real organization's internal environment, an engagement, a production deployment or a completed audit.
+Inspired by a client-supplied compliance request, with the employer anonymized as **Acme**. This independent project models Acme's Technology GRC group and its fictional **Atlas Records** service. It does not describe a real organization's internal environment, an engagement, a production deployment, or a completed audit.
 
 ## Start here
 
