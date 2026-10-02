@@ -1,6 +1,6 @@
 # External audit support and compliance reporting
 
-**Objective:** provide a coherent, reproducible account of control objectives, evidence, findings and management action. The consultant coordinates readiness and evidence under the TechGRC manager. The independent assessor retains responsibility for the external assessment conclusion.
+**Objective:** provide a coherent, reproducible account of control objectives, evidence, findings and management action. The GRC team coordinates readiness and evidence under the GRC manager. The independent assessor retains responsibility for the external assessment conclusion.
 
 ## Prepare the engagement boundary
 

@@ -4,7 +4,7 @@
 
 ## Trigger the review early
 
-Run readiness review for a new service, significant architecture change, new sensitive data class, new region, major supplier change or new customer assurance commitment. The service owner supplies scope, dependencies and intended launch date. TechGRC coordinates evidence requirements and escalates unresolved issues under the manager's authority.
+Run readiness review for a new service, significant architecture change, new sensitive data class, new region, major supplier change or new customer assurance commitment. The service owner supplies scope, dependencies and intended launch date. The GRC team coordinates evidence requirements and escalates unresolved issues under the manager's authority.
 
 Do not wait until the release is built to discover that data residency, identity integration or recovery cannot meet the requirement. Phase-zero scope and classification are readiness inputs.
 
@@ -20,7 +20,7 @@ Do not wait until the release is built to discover that data residency, identity
 | Recovery | BIA, RPO/RTO and representative restore exercise | Failed integrity validation | Continuity/service owner |
 | Suppliers | Dependency assessment and required agreements | Unapproved subprocessor or missing obligation | Procurement/legal/security |
 | Operations | Runbooks, support, regional handoff and capacity | No owner outside one time zone | Operations owner |
-| Assurance | Control evidence, known findings and report limitations | Material coverage gap hidden from decision | TechGRC manager |
+| Assurance | Control evidence, known findings and report limitations | Material coverage gap hidden from decision | GRC manager |
 
 ## Decision options
 

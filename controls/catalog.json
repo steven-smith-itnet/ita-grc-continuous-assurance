@@ -31,7 +31,7 @@
     ],
     "applies": {},
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -53,7 +53,7 @@
     ],
     "applies": {},
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -70,7 +70,7 @@
     ],
     "applies": {},
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -87,7 +87,7 @@
     ],
     "applies": {},
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -108,7 +108,7 @@
       ]
     },
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -129,7 +129,7 @@
     ],
     "applies": {},
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -146,7 +146,7 @@
     ],
     "applies": {},
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -168,7 +168,7 @@
     ],
     "applies": {},
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -189,7 +189,7 @@
     ],
     "applies": {},
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -207,7 +207,7 @@
     ],
     "applies": {},
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -229,7 +229,7 @@
       ]
     },
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -260,7 +260,7 @@
       ]
     },
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -281,7 +281,7 @@
     ],
     "applies": {},
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   },
@@ -302,7 +302,7 @@
       ]
     },
     "version": "1.0",
-    "owner": "TechGRC control steward",
+    "owner": "GRC control steward",
     "evidence_type": "synthetic observation in demo",
     "limitation": "Evaluates supplied facts. Requires authenticated source collection and independent review for production."
   }

@@ -10,7 +10,7 @@ Risk assessments should identify business objectives, threat scenarios, existing
 
 ## Personnel lifecycle and training
 
-Coordinate employment/contractor screening where appropriate, confidentiality obligations, role-specific training, acceptable-use expectations, disciplinary procedures and termination processes. Legal and HR own jurisdiction-sensitive decisions. TechGRC tests whether defined procedures operate and whether technical access lifecycle aligns with personnel events.
+Coordinate employment/contractor screening where appropriate, confidentiality obligations, role-specific training, acceptable-use expectations, disciplinary procedures and termination processes. Legal and HR own jurisdiction-sensitive decisions. The GRC team tests whether defined procedures operate and whether technical access lifecycle aligns with personnel events.
 
 Training evidence includes target population, assignments, completion, exceptions and effectiveness checks. Completion percentage alone does not establish that administrators can execute a recovery runbook or recognize a targeted social-engineering attempt.
 

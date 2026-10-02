@@ -3,7 +3,7 @@
     "title": "Continuous assurance, engineered",
     "lead": "From service scope to a defensible readiness decision.",
     "points": [
-      "A fictional multi-cloud service inspired by a TechGRC compliance role.",
+      "A fictional multi-cloud service inspired by a client compliance request.",
       "Runnable control tests, explicit evidence limits and a phased implementation handbook.",
       "Synthetic data throughout the public demonstration."
     ],
@@ -17,7 +17,7 @@
       "Find control failures and missing evidence early.",
       "Give management and assessors traceable, reviewable information."
     ],
-    "notes": "The consultant coordinates under the TechGRC manager. Management owns risk acceptance and independent assessors own their conclusions."
+    "notes": "The GRC team coordinates under the GRC manager. Management owns risk acceptance and independent assessors own their conclusions."
   },
   {
     "title": "Scope before score",
@@ -190,14 +190,14 @@
     "notes": "No model APIs are called by the demo. Agentic workflows are a proposed extension with bounded tools and reviewed access."
   },
   {
-    "title": "Seven projects from the role's priorities",
-    "lead": "Each priority in the hiring notes became runnable work with expected results.",
+    "title": "Seven projects from the request's priorities",
+    "lead": "Each priority in the request became runnable work with expected results.",
     "points": [
       "Use cases, configuration drift, control evaluation and evidence data flows.",
       "Remediation verification, audit process testing and SOC 2-first coverage.",
       "Every project carries provider-native fixtures for AWS, Azure and GCP."
     ],
-    "notes": "Open the projects page. Each card shows the role priority it answers, the headline result and the downloadable bundle. The base lab tests supplied facts; the projects test where those facts come from."
+    "notes": "Open the projects page. Each card shows the request priority it answers, the headline result and the downloadable bundle. The base lab tests supplied facts; the projects test where those facts come from."
   },
   {
     "title": "Derive the fact, then test the test",

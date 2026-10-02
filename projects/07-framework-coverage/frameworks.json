@@ -456,7 +456,7 @@
     "pci_dss": {
       "name": "PCI DSS v4.0.1",
       "priority": 4,
-      "note": "Owned by a separate team in the role input. Not mapped in these projects.",
+      "note": "Owned by a separate team in the request input. Not mapped in these projects.",
       "criteria": []
     }
   }

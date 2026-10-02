@@ -1,6 +1,6 @@
 # Source register and verification boundaries
 
-Last source review: **2026-10-02**. The supplied role description is the requirements source. The architecture, phases, thresholds, fictional service and example procedures are this project's design choices. Provider behavior and framework descriptions use the primary references below. Recheck availability, supported resource types, regional behavior, licensing and authoritative framework text before implementation.
+Last source review: **2026-10-02**. The [client compliance request](../REQUEST-SOURCE.md) is the requirements source. The architecture, phases, thresholds, fictional service and example procedures are this project's design choices. Provider behavior and framework descriptions use the primary references below. Recheck availability, supported resource types, regional behavior, licensing and authoritative framework text before implementation.
 
 ## Framework and assessment references
 

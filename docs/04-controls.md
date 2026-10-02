@@ -6,7 +6,7 @@ The chain is `obligation → risk → control objective → implementation → t
 
 ## Write a control that can be tested
 
-A useful implementation statement names who performs an action, on which population, at what frequency, using which system, and what record is retained. For example: “The platform team enforces explicit anonymous-access prevention on each in-scope storage resource. A daily collector obtains the provider setting, and TechGRC reviews exceptions within the assigned service level.” This is a local baseline, not a complete statement of cloud-storage security.
+A useful implementation statement names who performs an action, on which population, at what frequency, using which system, and what record is retained. For example: “The platform team enforces explicit anonymous-access prevention on each in-scope storage resource. A daily collector obtains the provider setting, and the GRC team reviews exceptions within the assigned service level.” This is a local baseline, not a complete statement of cloud-storage security.
 
 Avoid “all data is secure.” Replace it with specific objectives for exposure, encryption, keys, access, logging, retention and recoverability. An encrypted public dataset illustrates why those need separate tests.
 

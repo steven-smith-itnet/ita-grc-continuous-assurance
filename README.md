@@ -30,7 +30,7 @@ The engine and tests require Python 3.11+ and no third-party packages. Provider 
 
 ## Deeper projects
 
-Seven runnable sub-projects go deeper on the priorities in the [supplementary role notes](ROLE-SOURCE.md#supplementary-priorities). Start with [the projects overview](projects/README.md).
+Seven runnable sub-projects go deeper on the priorities in the [supplementary request priorities](REQUEST-SOURCE.md#supplementary-priorities). Start with [the projects overview](projects/README.md).
 
 | Project | Focus |
 |---|---|

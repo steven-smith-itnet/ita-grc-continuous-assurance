@@ -1,6 +1,6 @@
 # Deeper projects
 
-Seven runnable sub-projects extend the base lab toward the priorities in a second, more specific description of the same role. Each project has its own code, synthetic fixtures for AWS, Azure and Google Cloud, regression tests, expected results and a write-up. The employer remains anonymized as **Acme**. See [the role source](../ROLE-SOURCE.md) for the anonymized priorities.
+Seven runnable sub-projects extend the base lab toward the priorities in the second, more specific part of the compliance request. Each project has its own code, synthetic fixtures for AWS, Azure and Google Cloud, regression tests, expected results and a write-up. The employer remains anonymized as **Acme**. See [the request source](../REQUEST-SOURCE.md) for the anonymized priorities.
 
 The base lab evaluates 14 controls over supplied facts, such as `privileged_mfa_verified: true`. These projects go one layer down. They derive those facts from the records that produce them, test the test logic, test the evidence pipeline, decide when a fix is really fixed, and test the audit process itself.
 

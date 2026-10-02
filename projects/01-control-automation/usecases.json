@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog": "Acme TechGRC control automation use cases",
+  "catalog": "Acme GRC control automation use cases",
   "version": "1.0",
   "note": "Fictional Acme policy values and candidate framework mappings. Mappings require review against the authoritative text by the control steward and the assessor.",
   "usecases": [

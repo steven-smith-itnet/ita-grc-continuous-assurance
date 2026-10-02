@@ -6,14 +6,14 @@
 
 | Activity | Responsible | Accountable | Consulted | Informed |
 |---|---|---|---|---|
-| Scope and priorities | Compliance product consultant | TechGRC manager | Service, legal, privacy, cloud leads | Control owners |
-| Resource and data inventory | Platform teams and data stewards | Service/data owner | TechGRC | Regional teams |
-| Control implementation | Engineering/process owner | Control owner | Security architecture and TechGRC | Service manager |
+| Scope and priorities | GRC analyst | GRC manager | Service, legal, privacy, cloud leads | Control owners |
+| Resource and data inventory | Platform teams and data stewards | Service/data owner | GRC | Regional teams |
+| Control implementation | Engineering/process owner | Control owner | Security architecture and GRC | Service manager |
 | Automated test code | GRC/platform engineer | Control steward | Independent reviewer | Operators |
-| Remediation | Assigned technical owner | Service owner | TechGRC and security | Manager |
-| Risk acceptance | Authorized risk decision maker | Authorized business/risk owner | Legal/security/TechGRC | Affected operators |
+| Remediation | Assigned technical owner | Service owner | GRC and security | Manager |
+| Risk acceptance | Authorized risk decision maker | Authorized business/risk owner | Legal/security/GRC | Affected operators |
 | Retest and closure | Independent reviewer | Assurance lead | Remediation owner | Manager |
-| External audit coordination | Consultant/PBC coordinator | TechGRC manager | External assessor and owners | Stakeholders |
+| External audit coordination | GRC analyst/PBC coordinator | GRC manager | External assessor and owners | Stakeholders |
 
 Adapt titles to the organization. The essential property is explicit decision authority and separation between implementation and independent review.
 

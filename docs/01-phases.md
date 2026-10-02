@@ -15,7 +15,7 @@ This is a proposed delivery sequence, not a claim that an organization completed
 
 ## Phase 0: establish who can decide
 
-Interview the service owner, TechGRC manager, cloud leads, identity owner, data steward, legal/privacy contact and recovery owner. Obtain a product data-flow description and existing contractual commitments. Record customer-facing claims separately from internally proposed targets. Identify the person authorized to accept service risk and the people prohibited from approving their own exceptions.
+Interview the service owner, GRC manager, cloud leads, identity owner, data steward, legal/privacy contact and recovery owner. Obtain a product data-flow description and existing contractual commitments. Record customer-facing claims separately from internally proposed targets. Identify the person authorized to accept service risk and the people prohibited from approving their own exceptions.
 
 Write a one-page charter that names the service boundary, exclusions, intended audience, delivery budget, first audit period and dependency owners. Mark unknowns with owners and due dates. A missing answer is a discovery task, not a reason to claim the service is ready.
 
@@ -45,7 +45,7 @@ Expand from posture into operating controls: actual access removals, changes wit
 
 ## Phases 6–7: make the program repeatable
 
-Freeze the period, preserve the population, generate the evidence index and conduct a mock walkthrough. Every exception receives an owner and deadline. The TechGRC manager reviews the management report, including coverage gaps. After launch, refresh applicability when a service adds data types, regions, suppliers or major architecture changes.
+Freeze the period, preserve the population, generate the evidence index and conduct a mock walkthrough. Every exception receives an owner and deadline. The GRC manager reviews the management report, including coverage gaps. After launch, refresh applicability when a service adds data types, regions, suppliers or major architecture changes.
 
 ## Stop and re-plan triggers
 

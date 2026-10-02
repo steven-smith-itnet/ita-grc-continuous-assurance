@@ -1,6 +1,6 @@
 # Optional AI assistance with human accountability
 
-**Objective:** explore AI support for repetitive analysis while keeping evidence, test outcomes and risk decisions traceable. AI is an extension to the supplied role, not a stated requirement of the posting or a prerequisite for this project.
+**Objective:** explore AI support for repetitive analysis while keeping evidence, test outcomes and risk decisions traceable. AI is an extension to the supplied request, not a stated requirement or a prerequisite for this project.
 
 ## Suitable tasks
 

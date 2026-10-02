@@ -1,20 +1,20 @@
 # Build a continuous assurance program
 
-A portfolio engineering case study inspired by the supplied Compliance Product Consultant role description, with the employer anonymized as **Acme**. This project models Acme's Technology GRC group using a fictional service called **Atlas Records**, synthetic evidence, and proposed operating procedures. The source employer's actual architecture, policies, findings, control implementations, and audit scope were not provided. Nothing here represents a real client engagement or an assurance opinion.
+A portfolio engineering case study inspired by a client-supplied compliance request, with the organization anonymized as **Acme**. This project models Acme's GRC function using a fictional service called **Atlas Records**, synthetic evidence, and proposed operating procedures. The source organization's actual architecture, policies, findings, control implementations, and audit scope were not provided. Nothing here represents a real client engagement or an assurance opinion.
 
-The [anonymized role excerpt](../ROLE-SOURCE.md) is retained for traceability.
+The [anonymized request](../REQUEST-SOURCE.md) is retained for traceability.
 
 The business problem is straightforward: a product team must explain which obligations apply to its service, demonstrate that controls operate, find exceptions early, and close findings with evidence that survives scrutiny. Adding a dashboard does not solve unclear scope, unreliable inventories, missing ownership, or poor evidence quality. This project builds those foundations first.
 
-## Objectives translated from the role
+## Objectives translated from the request
 
 | Role requirement | Problem to solve | Implementation | Concrete proof | Accountable decision |
 |---|---|---|---|---|
-| Drive compliance under the TechGRC manager | Teams interpret obligations differently | Approved charter, requirements register, control catalog and escalation matrix | Versioned scope and control records | Manager approves program scope and priorities |
+| Drive compliance under the GRC manager | Teams interpret obligations differently | Approved charter, requirements register, control catalog and escalation matrix | Versioned scope and control records | Manager approves program scope and priorities |
 | Continuous auditing and monitoring | Annual collection misses configuration drift and operating gaps | Scheduled inventory, event triggers, deterministic tests and human review | Dated runs, complete population and collection-gap reports | Control owner owns correction, assurance reviewer evaluates sufficiency |
 | External audit | Evidence requests arrive late and cannot be reproduced | Period-based evidence index, PBC queue, walkthroughs and independently reviewed workpapers | Frozen export with provenance and sample rationale | External assessor determines conclusions |
 | Service readiness | A launch inherits untested controls and dependencies | Gate review spanning design, implementation and operation | Readiness record with blockers, owners and expiry | Authorized service risk owner accepts residual risk |
-| Compliance reports | Scores hide unknowns and provide no management action | Executive risk brief plus engineering detail and methodology | Machine-generated results joined to reviewed findings | TechGRC manager approves distribution |
+| Compliance reports | Scores hide unknowns and provide no management action | Executive risk brief plus engineering detail and methodology | Machine-generated results joined to reviewed findings | GRC manager approves distribution |
 | Identify and define issues | Scanner output lacks business context | Condition, criteria, cause, consequence and corrective action | Finding record with reproduction and affected population | Triage lead confirms severity |
 | Root cause and remediation | Symptoms are fixed while defects repeat | Causal analysis, corrective/preventive work and independent retest | Before/after evidence, recurrence tests and closure approval | Owner implements, reviewer closes |
 | Global collaboration | Handoffs, time zones and local obligations create gaps | Regional evidence custody, UTC records and explicit handoff receipts | RACI, runbooks, regional matrix and meeting decisions | Regional owners resolve jurisdiction and access decisions |
@@ -52,6 +52,6 @@ Proposed sensitive-data variants include ordinary business confidential records,
 
 ## Deeper projects
 
-Supplementary hiring notes for the same role set clearer priorities: building control automation use cases, evaluating controls, testing how evidence reaches the control, testing remediation and audit processes, and SOC 2 first. Seven [deeper projects](../projects/README.md) answer those priorities with runnable code, three-cloud fixtures and expected results.
+The second part of the request set clearer priorities: building control automation use cases, evaluating controls, testing how evidence reaches the control, testing remediation and audit processes, and SOC 2 first. Seven [deeper projects](../projects/README.md) answer those priorities with runnable code, three-cloud fixtures and expected results.
 
 Start with [the delivery phases](01-phases.md), then [inventory](02-inventory.md). Use [the lab](24-lab.md) for a short demonstration before reading the full implementation sequence.

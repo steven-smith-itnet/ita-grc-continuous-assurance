@@ -3,7 +3,7 @@
   "baseline_id": "STG-BASELINE",
   "version": "1.2",
   "resource_type": "object storage",
-  "owner": "Acme platform engineering, reviewed by TechGRC",
+  "owner": "Acme platform engineering, reviewed by GRC",
   "settings": [
     {
       "id": "public_access_prevented",

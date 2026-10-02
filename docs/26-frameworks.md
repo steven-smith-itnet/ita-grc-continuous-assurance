@@ -1,10 +1,10 @@
 # Framework workstreams and mapping discipline
 
-**Objective:** support the frameworks named in the role while preserving their different purposes, scopes and assessment methods. This chapter is an implementation planning guide. It does not reproduce licensed standards or provide a complete requirement-by-requirement certification workbook.
+**Objective:** support the frameworks named in the request while preserving their different purposes, scopes and assessment methods. This chapter is an implementation planning guide. It does not reproduce licensed standards or provide a complete requirement-by-requirement certification workbook.
 
 ## Priority for this role
 
-The supplementary role notes set the order: SOC 2 first, ISO standards next, HIPAA highly preferred, and PCI DSS owned by a separate team. [Project 07](../projects/07-framework-coverage/README.md) computes automated evidence coverage in that order and turns the gaps into a backlog. The PCI DSS section below stays for completeness.
+The supplementary request priorities set the order: SOC 2 first, ISO standards next, HIPAA highly preferred, and PCI DSS owned by a separate team. [Project 07](../projects/07-framework-coverage/README.md) computes automated evidence coverage in that order and turns the gaps into a backlog. The PCI DSS section below stays for completeness.
 
 ## SOC 2
 
@@ -40,7 +40,7 @@ The lab uses synthetic records and makes no claim to process actual ePHI. Its re
 
 ## HITRUST
 
-The posting's “HITRSUT” is interpreted as HITRUST. HITRUST offers different assessment paths, including e1, i1 and r2, with different assurance scope and depth. Select the required path with the customer/assessor and use current licensed materials. [HITRUST assessment overview](https://hitrustalliance.net/assessments-and-certifications).
+HITRUST offers different assessment paths, including e1, i1 and r2, with different assurance scope and depth. Select the required path with the customer/assessor and use current licensed materials. [HITRUST assessment overview](https://hitrustalliance.net/assessments-and-certifications).
 
 Implementation workstream: define scope and factors, determine the applicable assessment, assign requirement owners, gather evidence, assess implementation and maturity where relevant, remediate gaps and coordinate validated assessment activities. Do not copy proprietary requirement sets into a public portfolio or infer certification from another framework's control mapping.
 

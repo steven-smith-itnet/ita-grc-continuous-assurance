@@ -45,7 +45,7 @@ Scale by partitioning collection along provider, account/project and region boun
 
 ## Go-live gates
 
-Required gates include approved scope, proven source coverage, validated test semantics, secure identities, tested storage/recovery, known operating costs, documented exceptions, reviewer acceptance, incident ownership and an approved rollback plan. The TechGRC manager and authorized service owners decide readiness with the evidence in hand.
+Required gates include approved scope, proven source coverage, validated test semantics, secure identities, tested storage/recovery, known operating costs, documented exceptions, reviewer acceptance, incident ownership and an approved rollback plan. The GRC manager and authorized service owners decide readiness with the evidence in hand.
 
 ## Public publication
 
