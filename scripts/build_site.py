@@ -147,7 +147,7 @@ PYTHONPATH=src python3 -m assurance verify artifacts/projects/01-control-automat
     (out / 'presentation.html').write_text(shell('Presentation', deck))
     with ZipFile(out / 'source.zip', 'w', ZIP_DEFLATED) as archive:
         for path in sources:
-            archive.write(path, 'techgrc-continuous-assurance/' + str(path.relative_to(ROOT)))
+            archive.write(path, 'ita-grc-continuous-assurance/' + str(path.relative_to(ROOT)))
     with ZipFile(out / 'synthetic-evidence.zip', 'w', ZIP_DEFLATED) as archive:
         for path in sorted((out / 'data').rglob('*')):
             if path.is_file():

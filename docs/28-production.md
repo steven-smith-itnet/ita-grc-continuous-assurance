@@ -49,7 +49,7 @@ Required gates include approved scope, proven source coverage, validated test se
 
 ## Public publication
 
-The project lives in its own standalone repository at `/home/ssmith/repos/techgrc-continuous-assurance`. Set GitHub Pages to GitHub Actions and use the provided manual Pages workflow after choosing the repository. The build uses relative links and publishes only the generated site. The repository's regular check workflow tests code and validates the site.
+The project lives in its own standalone repository at `/home/ssmith/repos/ita-grc-continuous-assurance`. Set GitHub Pages to GitHub Actions and use the provided manual Pages workflow after choosing the repository. The build uses relative links and publishes only the generated site. The repository's regular check workflow tests code and validates the site.
 
 Build from the repository root with `python3 scripts/build_site.py`. The generated `site/` directory is the publication artifact. A portfolio site can link to the eventual GitHub Pages URL. No cloud resources need to be deployed to publish the synthetic demonstration. [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 

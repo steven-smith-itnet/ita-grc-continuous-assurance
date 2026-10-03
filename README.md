@@ -49,9 +49,9 @@ PYTHONPATH=src python3 -m assurance verify artifacts/projects/04-evidence-data-f
 
 ## Presentation site
 
-- [Live handbook and interactive demo](https://steven-smith-itnet.github.io/techgrc-continuous-assurance/)
-- [Presentation](https://steven-smith-itnet.github.io/techgrc-continuous-assurance/presentation.html)
-- [GitHub repository](https://github.com/steven-smith-itnet/techgrc-continuous-assurance)
+- [Live handbook and interactive demo](https://steven-smith-itnet.github.io/ita-grc-continuous-assurance/)
+- [Presentation](https://steven-smith-itnet.github.io/ita-grc-continuous-assurance/presentation.html)
+- [GitHub repository](https://github.com/steven-smith-itnet/ita-grc-continuous-assurance)
 
 ```bash
 python3 -m venv .venv
@@ -65,7 +65,7 @@ Open http://localhost:8765. The site contains a searchable handbook, interactive
 
 ## Standalone GitHub Pages
 
-This project is a standalone repository at `/home/ssmith/repos/techgrc-continuous-assurance`. Its `.github/workflows/check.yml` tests and builds it. GitHub Pages uses GitHub Actions, and the Pages workflow deploys on every push to `main` or a manual run. The workflow publishes only the generated static site. Internal links work under a repository project path.
+This project is a standalone repository at `/home/ssmith/repos/ita-grc-continuous-assurance`. Its `.github/workflows/check.yml` tests and builds it. GitHub Pages uses GitHub Actions, and the Pages workflow deploys on every push to `main` or a manual run. The workflow publishes only the generated static site. Internal links work under a repository project path.
 
 The public source ZIP uses an explicit directory/suffix allowlist. Private evidence, arbitrary artifacts, credentials, local environments and Terraform state are excluded. Do not replace synthetic fixtures with real records in a public repository.
 

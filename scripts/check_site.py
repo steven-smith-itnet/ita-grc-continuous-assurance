@@ -69,7 +69,7 @@ def check(root):
             if hashlib.sha256((folder / name).read_bytes()).hexdigest() != digest:
                 errors.append(f'Project bundle hash mismatch: {slug}/{name}')
     with ZipFile(root / 'source.zip') as archive:
-        if 'techgrc-continuous-assurance/projects/README.md' not in archive.namelist():
+        if 'ita-grc-continuous-assurance/projects/README.md' not in archive.namelist():
             errors.append('Projects missing from the source package')
     if errors:
         raise SystemExit('\n'.join(errors))
